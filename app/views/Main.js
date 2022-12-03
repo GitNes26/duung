@@ -1,5 +1,6 @@
 import api from "../helpers/api.js";
-import { fetchRequestAsync } from "../helpers/fetchRequest.js";
+import { fetchRequestAsync, GET_fetchRequestAsync } from "../helpers/fetchRequest.js";
+import { CleanCookies, getId, getToken } from "../helpers/helpers.js";
 
 const d = document;
 
@@ -68,7 +69,7 @@ export function Main() {
                      <a class="e__sidebar1 d-inline-block text-truncate pinkScroll" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-user icon"></i>Perfil</a>
                      <a class="e__sidebar1 d-inline-block text-truncate blueScroll" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-wrench icon"></i>Configuraciones</a>
 
-                     <a class="e__sidebar1 d-inline-block text-truncate logout" data-bs-parent="#sidebar" href="/"> <i class="fas fa-solid fa-wrench icon"></i>Cerrar Sesión</a>
+                     <a id="btn_logout" class="e__sidebar1 d-inline-block text-truncate logout" data-bs-parent="#sidebar"> <i class="fas fa-sign-out-alt icon"></i>Cerrar Sesión</a>
                      
                   </nav>
                </div>
@@ -176,7 +177,10 @@ d.addEventListener("click", function(e) {
       blueScroll();
    }
 
-   
+
+   if (e.target.matches("#btn_logout") || e.target.matches("#btn_logout *")) {
+      logOut();
+   }
 })
 
 d.addEventListener("DOMContentLoaded", () => {
@@ -205,5 +209,13 @@ function purpleScroll() {
 function blueScroll() {
    const contenedor = document.getElementById("contenedor");
    contenedor.style.backgroundColor = "#26A6DD";
+}
+
+const logOut = async () => {
+   console.log(Cookies.get());
+   await GET_fetchRequestAsync(`${api.LOGOUT}/${getId()}`, api.DELETE, getToken())
+   CleanCookies();
+   location.hash = "";
+   console.log(Cookies.get());
 }
 //#endregion FUNCIONES LOGICAS

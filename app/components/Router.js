@@ -18,12 +18,14 @@ export async function Router() {
    if (!hash || hash === "#/") {
       await SplashHeaders();
       await $root.appendChild(Splash());
-   } else if (hash.includes("#/login")) {
+   } else if (hash === "#/login") {
       await LoginHeaders();
-      $root.innerHTML = Login();
-   } else if (hash.includes("#/signup")) {
-      $root.innerHTML = "<h2>Registro</h2>"
-   } else if (hash.includes("#/main")) {
+      $root.innerHTML = await Login();
+      d.querySelector("#btn_chk_login").click();
+   } else if (hash === "#/signup") {
+      await LoginHeaders();
+      $root.innerHTML = await Login();
+   } else if (hash === "#/main") {
       await MainHeaders();
       await $root.appendChild(Main());
    } 

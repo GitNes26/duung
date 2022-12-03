@@ -84,10 +84,8 @@ export function Splash() {
 
 //#region FUNCIONES LOGICAS
 d.addEventListener("click", function(e) {
-   console.log("click");
    if (e.target.matches(".btn_start") || e.target.matches(".btn_start *")) {
-      console.log("btn_sat");
-      location.assign("#/loginss")
+      location.hash = "#/login";
    }
 })
 //#endregion FUNCIONES LOGICAS

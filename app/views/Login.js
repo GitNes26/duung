@@ -1,5 +1,6 @@
 import api from "../helpers/api.js";
 import { fetchRequestAsync } from "../helpers/fetchRequest.js";
+import { setCookies } from "../helpers/helpers.js";
 import { inputsValidate } from "../helpers/validates.js";
 
 const d = document;
@@ -52,7 +53,7 @@ export function Login() {
 
             <div class="login">
                <form id="form_login">
-                  <label for="chk" aria-hidden="true">Login</label>
+                  <label for="chk" aria-hidden="true" id="btn_chk_login">Login</label>
                   <input
                      type="text"
                      id="username_login"
@@ -104,11 +105,35 @@ switchers.forEach((item) => {
 d.addEventListener("submit", async function (e) {
    e.preventDefault();
    if (e.target.id === "form_signup") {
-      console.log("a registrarse");
+      // VALIDACION DE FORMULARIO
+      if (!inputsValidate(e.target)) return;
+      
+      // CREACION DE LA DATA QUE SE ENVIARA A LA PETCION
+      const data = {
+         email: document.querySelector("#email_signup").value,
+         username: document.querySelector("#username_signup").value,
+         password: document.querySelector("#password_signup").value,
+      }
+      // ENVIAR PETICION
+      const objResponse = await fetchRequestAsync(api.SIGNUP, api.POST, data);
+
+      console.log("🚀 ~ file: login.js:62 ~ objResponse", objResponse);
+      
+      if (!objResponse.status) return;
+      Swal.fire({
+         icon: `${objResponse.alert_icon}`,
+         title: `${objResponse.alert_text}`,
+         text: ``,
+         showConfirmButton: false,
+         confirmButtonColor: "#494E53",
+         timer: 2000
+      }).then(() => {
+         e.target.reset();
+         d.querySelector("#btn_chk_login").click()
+      })
    }
 
    if (e.target.id === "form_login") {
-      console.log("logearseee");
       // VALIDACION DE FORMULARIO
       if (!inputsValidate(e.target)) return;
       
@@ -125,7 +150,7 @@ d.addEventListener("submit", async function (e) {
       const dataResponse = objResponse.data;
       
       if (!objResponse.status) return;
-      Cookies.set('token', `${objResponse.token}`);
+      setCookies(objResponse);
       console.log(Cookies.get());
       Swal.fire({
          icon: `${objResponse.alert_icon}`,

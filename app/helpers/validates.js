@@ -1,3 +1,6 @@
+import { getSession, getToken } from "./helpers.js";
+
+
 export function mostrarAlerta(
 	ajaxResponse,
 	icono,
@@ -86,7 +89,7 @@ export function showToast(icono, mensaje, posicion="top-end") {
 
 export const inputsValidate = (form) => {
 	let inputs = $(form).serializeArray();
-	console.log(inputs)
+	// console.log(inputs)
 	let validate = true;
 	$.each(inputs, function (i, input_iterable) {
 	  if (!validate) return;
@@ -105,6 +108,13 @@ const inputValidate = (input) => {
 	  input.focus();
 	  return false;
 	}
+	return true;
+}
+
+export const validateSession = () => {
+   console.log("validateSession()");
+	if (!getSession()) return false;
+	if(!getToken()) return false;
 	return true;
 }
 
