@@ -160,19 +160,19 @@ export function Main() {
 
 //#region FUNCIONES LOGICAS
 d.addEventListener("click", function(e) {
-   if (e.target.matches(".yellowScroll *")) {
+   if (e.target.matches(".yellowScroll") || e.target.matches(".yellowScroll *")) {
       yellowScroll();
    }
-   if (e.target.matches(".pinkScroll *")) {
+   if (e.target.matches(".pinkScroll") || e.target.matches(".pinkScroll *")) {
       pinkScroll();
    }
-   if (e.target.matches(".greenScroll *")) {
+   if (e.target.matches(".greenScroll") || e.target.matches(".greenScroll *")) {
       greenScroll();
    }
-   if (e.target.matches(".purpleScroll *")) {
+   if (e.target.matches(".purpleScroll") || e.target.matches(".purpleScroll *")) {
       purpleScroll();
    }
-   if (e.target.matches(".blueScroll *")) {
+   if (e.target.matches(".blueScroll") || e.target.matches(".blueScroll *")) {
       blueScroll();
    }
 

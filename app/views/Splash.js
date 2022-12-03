@@ -56,7 +56,7 @@ export function Splash() {
                   <img src="/app/assets/images/1.png" class="image1"/>  
                </div>
                <div class="btn__position"> 
-                     <a href="#/login" class="button1 btn fw-light" autofocus> Comenzar </a>
+                     <a class="button1 btn fw-light btn_start" autofocus> Comenzar </a>
                </div>
             </div>
          </div>
@@ -83,5 +83,11 @@ export function Splash() {
 
 
 //#region FUNCIONES LOGICAS
-
+d.addEventListener("click", function(e) {
+   console.log("click");
+   if (e.target.matches(".btn_start") || e.target.matches(".btn_start *")) {
+      console.log("btn_sat");
+      location.assign("#/loginss")
+   }
+})
 //#endregion FUNCIONES LOGICAS
