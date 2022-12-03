@@ -4,8 +4,10 @@ const assets = [
    "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback",
    "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js",
    "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css",
-   "/admin/plugins/admin-lte-3/css/adminlte.min.css",
-   "/admin/plugins/admin-lte-3/css/icheck-bootstrap.min.css",
+   "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css",
+   "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js",
+   "/admin/app/assets/plugins/admin-lte-3/css/adminlte.min.css",
+   "/app/assets/plugins/admin-lte-3/css/icheck-bootstrap.min.css",
    "https://cdn.datatables.net/v/bs5/dt-1.11.3/af-2.3.7/b-2.0.1/b-html5-2.0.1/b-print-2.0.1/r-2.2.9/sc-2.0.5/datatables.min.css",
    "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
    "https://site-assets.fontawesome.com/releases/v6.1.0/css/all.css",
@@ -14,15 +16,30 @@ const assets = [
 
 
    "/index.html",
-   "/admin/css/misEstilos.css",
-   "/admin/css/responsivo.css",
-   "/admin/js/app.js",
-   "/admin/js/globals.js",
-   "/admin/js/master.js",
-   "/admin/js/navbar.js",
-   "/admin/js/sidebar.js",
+   "/app/assets/css/loginStyle.css",
+   "/app/assets/css/fondo.css",
+   "/app/assets/css/menu.css",
+   "/app/assets/css/style.css",
+
+   "/app/assets/fonts/LuckiestGuy-Regular.ttf",
+
+   "/app/assets/images/1.png",
+   "/app/assets/images/logo_duung.png",
+   "/app/assets/images/duung_icon.ico",
+
+   "/app/assets/helpers/",
+   "/app/assets/helpers/api.js",
+   "/app/assets/components/Loader.js",
+   "/app/assets/components/Router.js",
+
+   "/app/assets/views/Splash.js",
+   "/app/assets/views/Login.js",
+   "/app/assets/views/Main.js",
+
+   "/app/assets/App.js",
+   "/app/assets/index.js",
+   
    "/favicon.ico",
-   "/assets/images/logo_duung.png"
 ]
 
 self.addEventListener("install",installEvent => {

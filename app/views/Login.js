@@ -4,85 +4,16 @@ import { inputsValidate } from "../helpers/validates.js";
 
 const d = document;
 
-function links() {
-	const $head = d.createElement("head");
-	$head.innerHTML = `
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>DUUNG | Login</title>
-
-      <!-- METAS PARA PWA -->
-      <meta name="description" content="Bienvenid@s a DUUNG donde aprenderas...">
-      <meta name="theme-color" content="#F0DB4F">
-      <meta name="MobileOptimized" content="width">
-      <meta name="HandheldFriendly" content="true">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-      <link rel="shortcut icon" type="image/png" href="/assets/images/logo_duung.png">
-      <link rel="apple-touch-icon" href="/assets/images/logo_duung.png">
-      <link rel="apple-touch-startup-image" href="/assets/images/logo_duung.png">
-      <link rel="manifest" href="/manifest.json">
-      <!-- METAS PARA PWA -->
-
-
-      <!-- CDNS -->
-      <!-- JQuery 6 -->
-      <script
-         src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-         referrerpolicy="no-referrer"
-      ></script>
-      <!-- Select2 -->
-      <link
-         href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
-         rel="stylesheet"
-      />
-
-      <!-- FontAwesome 6 -->
-      <link
-         rel="stylesheet"
-         href="https://site-assets.fontawesome.com/releases/v6.1.0/css/all.css"
-      />
-
-      <!-- SweetAlert2 -->
-      <link
-         rel="stylesheet"
-         href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
-         referrerpolicy="no-referrer"
-      />
-      <!-- CDNS -->
-
-      <link
-         href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap"
-         rel="stylesheet"
-      />
-
-      <link
-         rel="stylesheet"
-         href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-      />
-
-      <link rel="stylesheet" type="text/css" href="/app/assets/css/logInStyle.css" />
-      <link rel="stylesheet" href="/app/assets/css/style.css" />
-      <link rel="stylesheet" href="/app/assets/css/fondo.css" />
-   `;
-	return $head;
-}
-function styles() {
-	const $styles = d.createElement("style");
-	$styles.innerHTML = `
-   `;
-	return $styles;
-}
-
 //#region FUNCIONES DE RENDERIZADO
+function addStyles() {
+	const $styles = d.querySelector("head style");
+	$styles.innerHTML = ``;
+}
+
 export function LoginHeaders() {
 	const $head = d.querySelector("head");
-	const $fragment = d.createDocumentFragment();
-	$head.innerHTML = "";
-	$fragment.appendChild(links());
-	$fragment.appendChild(styles());
-	$head.appendChild($fragment);
+   $head.querySelector("title").textContent = `DUUNG | Login`;
+	addStyles();
 }
 
 export function Login() {
@@ -161,7 +92,6 @@ export function Login() {
 
 //#region FUNCIONES LOGICAS
 const switchers = [...document.querySelectorAll(".switcher")];
-
 switchers.forEach((item) => {
 	item.addEventListener("click", function () {
 		switchers.forEach((item) =>

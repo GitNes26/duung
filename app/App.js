@@ -1,6 +1,6 @@
-import { CloseLoader, Loader } from "./components/Loader.js";
+// import { CloseLoader, Loader } from "./components/Loader.js";
 import { Router } from "./components/Router.js";
-import { SplashHeaders, Splash } from "./views/Splash.js";
+// import { SplashHeaders, Splash } from "./views/Splash.js";
 
 export function App() {
 

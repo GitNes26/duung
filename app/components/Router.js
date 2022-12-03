@@ -12,20 +12,23 @@ const $root = document.getElementById("root");
 export async function Router() {
    let {hash} = location; 
    console.log(hash);
-   Loader();
+   await Loader();
+
    $root.innerHTML = null;
    if (!hash || hash === "#/") {
-      SplashHeaders();
-      $root.appendChild(Splash());
+      await SplashHeaders();
+      await $root.appendChild(Splash());
    } else if (hash.includes("#/login")) {
-      LoginHeaders();
+      await LoginHeaders();
       $root.innerHTML = Login();
    } else if (hash.includes("#/signup")) {
       $root.innerHTML = "<h2>Registro</h2>"
    } else if (hash.includes("#/main")) {
-      MainHeaders();
-      $root.appendChild(Main());
-   } else {
+      await MainHeaders();
+      await $root.appendChild(Main());
+   } 
+   
+   else {
 
    }
    CloseLoader();
