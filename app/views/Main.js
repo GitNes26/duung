@@ -1,6 +1,6 @@
 import api from "../helpers/api.js";
 import { fetchRequestAsync, GET_fetchRequestAsync } from "../helpers/fetchRequest.js";
-import { CleanCookies, getId, getToken } from "../helpers/helpers.js";
+import { CleanCookies, getId, getToken, route } from "../helpers/helpers.js";
 
 const d = document;
 
@@ -30,6 +30,8 @@ export function Main() {
    const $navbar = d.createElement("div");
    const $sectionPrincipal = d.createElement("div");
    const $fragment = d.createDocumentFragment();
+
+   $container.id = "view-main";
 
    $navbar.id = "navbar";
    $navbar.innerHTML = `
@@ -147,7 +149,7 @@ export function Main() {
    `;
    $fragment.appendChild($sectionPrincipal);
 
-   $container.id = "contenedor";
+   // $container.id = "contenedor";
    $container.classList.add("contenedor");
    $container.innerHTML = `
       
@@ -161,24 +163,24 @@ export function Main() {
 
 //#region FUNCIONES LOGICAS
 d.addEventListener("click", function(e) {
-   if (e.target.matches(".yellowScroll") || e.target.matches(".yellowScroll *")) {
+   if (e.target.matches("#view-main .yellowScroll") || e.target.matches("#view-main .yellowScroll *")) {
       yellowScroll();
    }
-   if (e.target.matches(".pinkScroll") || e.target.matches(".pinkScroll *")) {
+   if (e.target.matches("#view-main .pinkScroll") || e.target.matches("#view-main .pinkScroll *")) {
       pinkScroll();
    }
-   if (e.target.matches(".greenScroll") || e.target.matches(".greenScroll *")) {
+   if (e.target.matches("#view-main .greenScroll") || e.target.matches("#view-main .greenScroll *")) {
       greenScroll();
    }
-   if (e.target.matches(".purpleScroll") || e.target.matches(".purpleScroll *")) {
+   if (e.target.matches("#view-main .purpleScroll") || e.target.matches("#view-main .purpleScroll *")) {
       purpleScroll();
    }
-   if (e.target.matches(".blueScroll") || e.target.matches(".blueScroll *")) {
+   if (e.target.matches("#view-main .blueScroll") || e.target.matches("#view-main .blueScroll *")) {
       blueScroll();
    }
 
 
-   if (e.target.matches("#btn_logout") || e.target.matches("#btn_logout *")) {
+   if (e.target.matches("#view-main #btn_logout") || e.target.matches("#view-main #btn_logout *")) {
       logOut();
    }
 })
@@ -187,27 +189,28 @@ d.addEventListener("DOMContentLoaded", () => {
 });
 
 function yellowScroll() {
-   const contenedor = document.getElementById("contenedor");
+   const contenedor = document.querySelector(".contenedor");
    contenedor.style.backgroundColor = "#e09d01";
 }
 
 function pinkScroll() {
-   const contenedor = document.getElementById("contenedor");
+   const contenedor = document.querySelector(".contenedor");
    contenedor.style.backgroundColor = "#9a47c1";
 }
 
 function greenScroll() {
-   const contenedor = document.getElementById("contenedor");
+   const contenedor = document.querySelector(".contenedor");
    contenedor.style.backgroundColor = "#7CCA4D";
 }
 
 function purpleScroll() {
-   const contenedor = document.getElementById("contenedor");
+   const contenedor = document.querySelector(".contenedor");
    contenedor.style.backgroundColor = "#4E54C8";
+   setTimeout(()=>route("choose-game"),500);
 }
 
 function blueScroll() {
-   const contenedor = document.getElementById("contenedor");
+   const contenedor = document.querySelector(".contenedor");
    contenedor.style.backgroundColor = "#26A6DD";
 }
 
@@ -215,7 +218,7 @@ const logOut = async () => {
    console.log(Cookies.get());
    await GET_fetchRequestAsync(`${api.LOGOUT}/${getId()}`, api.DELETE, getToken())
    CleanCookies();
-   location.hash = "";
+   route('')
    console.log(Cookies.get());
 }
 //#endregion FUNCIONES LOGICAS

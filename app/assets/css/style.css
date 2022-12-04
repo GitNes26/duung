@@ -24,7 +24,7 @@
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 @font-face {
     font-family: 'LuckiestGuy Regular';
-    src: url('../Font/LuckiestGuy-Regular.ttf') format('truetype');
+    src: url('/app/assets/fonts/LuckiestGuy-Regular.ttf') format('truetype');
     font-style: normal;
     font-weight: normal;
 }

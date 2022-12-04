@@ -1,6 +1,6 @@
 import api from "../helpers/api.js";
 import { fetchRequestAsync } from "../helpers/fetchRequest.js";
-import { setCookies } from "../helpers/helpers.js";
+import { route, setCookies } from "../helpers/helpers.js";
 import { inputsValidate } from "../helpers/validates.js";
 
 const d = document;
@@ -18,7 +18,9 @@ export function LoginHeaders() {
 }
 
 export function Login() {
-	return `
+   const $container = d.createElement("div");
+   $container.id ="view-login";
+	$container.innerHTML = `
       <div class="body">
          <div class="main" style="z-index: 2">
             <input type="checkbox" id="chk" aria-hidden="true" />
@@ -87,6 +89,7 @@ export function Login() {
          <li></li>
       </ul>
    `;
+   return $container;
 }
 //#endregion FUNCIONES DE RENDERIZADO
 
@@ -117,8 +120,6 @@ d.addEventListener("submit", async function (e) {
       // ENVIAR PETICION
       const objResponse = await fetchRequestAsync(api.SIGNUP, api.POST, data);
 
-      console.log("🚀 ~ file: login.js:62 ~ objResponse", objResponse);
-      
       if (!objResponse.status) return;
       Swal.fire({
          icon: `${objResponse.alert_icon}`,
@@ -145,13 +146,10 @@ d.addEventListener("submit", async function (e) {
       // ENVIAR PETICION
       const objResponse = await fetchRequestAsync(api.LOGIN, api.POST, data);
 
-      console.log("🚀 ~ file: login.js:62 ~ objResponse", objResponse)
-      
       const dataResponse = objResponse.data;
       
       if (!objResponse.status) return;
       setCookies(objResponse);
-      console.log(Cookies.get());
       Swal.fire({
          icon: `${objResponse.alert_icon}`,
          title: `BIENVENIDO <br> ${dataResponse.username}`,
@@ -160,7 +158,7 @@ d.addEventListener("submit", async function (e) {
          confirmButtonColor: "#494E53",
          timer: 1500
       }).then(() => {
-         location.hash = `#/main`;
+         route(`main`);
       })
    }
 });

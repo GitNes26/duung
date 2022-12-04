@@ -1,3 +1,5 @@
+import { route } from "../helpers/helpers.js";
+
 const d = document;
 
 //#region FUNCIONES DE RENDERIZADO
@@ -47,6 +49,7 @@ export function SplashHeaders() {
 
 export function Splash() {
 	const $contnet = d.createElement("div");
+   $contnet.id = "view-splash";
 	$contnet.innerHTML = `
       <div class="context">
 
@@ -56,7 +59,7 @@ export function Splash() {
                   <img src="/app/assets/images/1.png" class="image1"/>  
                </div>
                <div class="btn__position"> 
-                     <a class="button1 btn fw-light btn_start" autofocus> Comenzar </a>
+                     <a class="button1 btn fw-light" id="btn_begin" autofocus> Comenzar </a>
                </div>
             </div>
          </div>
@@ -84,8 +87,8 @@ export function Splash() {
 
 //#region FUNCIONES LOGICAS
 d.addEventListener("click", function(e) {
-   if (e.target.matches(".btn_start") || e.target.matches(".btn_start *")) {
-      location.hash = "#/login";
+   if (e.target.matches("#view-splash #btn_begin") || e.target.matches("#view-splash #btn_begin *")) {
+      route("login");
    }
 })
 //#endregion FUNCIONES LOGICAS

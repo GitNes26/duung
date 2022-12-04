@@ -13,6 +13,7 @@ export function iconEye() {
    })
 }
 
+export const route = (path) => location.hash=`#/${path}`;
 
 export const getSession = () => Cookies.get('active_session');
 export const getToken = () => Cookies.get('active_token');
@@ -22,7 +23,7 @@ export const getRole = () => Cookies.get('active_role');
 export const getEmail = () => Cookies.get('active_email');
 
 
-const expires = 10;
+const expires = 10; //dias
 export const setCookies = (objResponse) => {
    Cookies.set('active_session', true, {expires});
    Cookies.set('active_token', objResponse.token, {expires});
