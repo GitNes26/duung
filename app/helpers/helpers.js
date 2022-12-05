@@ -41,3 +41,11 @@ export const CleanCookies = () => {
    Cookies.remove('active_role', {expires});
    Cookies.remove('active_email', {expires});
 }
+
+export const playAudio = (audio) => {
+   console.log("audio");
+   const event_audio = document.querySelector("#audio_events");
+   event_audio.volume = 0.005;
+   event_audio.src = `/app/assets/audios/${audio}`;
+   event_audio.play();
+}

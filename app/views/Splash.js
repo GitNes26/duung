@@ -1,4 +1,4 @@
-import { route } from "../helpers/helpers.js";
+import { playAudio, route } from "../helpers/helpers.js";
 
 const d = document;
 
@@ -48,9 +48,9 @@ export function SplashHeaders() {
 }
 
 export function Splash() {
-	const $contnet = d.createElement("div");
-   $contnet.id = "view-splash";
-	$contnet.innerHTML = `
+	const $container = d.createElement("div");
+   $container.id = "view-splash";
+	$container.innerHTML = `
       <div class="context">
 
          <div class="bloquePrincipal">
@@ -64,23 +64,8 @@ export function Splash() {
             </div>
          </div>
       </div>
-
-      <div class="areaPurple">
-         <ul class="circles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-         </ul>
-      </div>
    `;
-	return $contnet;
+	return $container;
 }
 //#endregion FUNCIONES DE RENDERIZADO
 
@@ -88,6 +73,7 @@ export function Splash() {
 //#region FUNCIONES LOGICAS
 d.addEventListener("click", function(e) {
    if (e.target.matches("#view-splash #btn_begin") || e.target.matches("#view-splash #btn_begin *")) {
+      playAudio(`correct_answer2.mp3`);
       route("login");
    }
 })

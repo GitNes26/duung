@@ -75,19 +75,6 @@ export function Login() {
             </div>
          </div>
       </div>
-
-      <ul style="z-index: 1" class="circles">
-         <li></li>
-         <li></li>
-         <li></li>
-         <li></li>
-         <li></li>
-         <li></li>
-         <li></li>
-         <li></li>
-         <li></li>
-         <li></li>
-      </ul>
    `;
    return $container;
 }

@@ -1,4 +1,6 @@
-import { route } from "../helpers/helpers.js";
+import api from "../helpers/api.js";
+import { GET_fetchRequestAsync } from "../helpers/fetchRequest.js";
+import { getToken, route } from "../helpers/helpers.js";
 
 const d = document;
 
@@ -23,9 +25,9 @@ export function ChooseGameHeaders() {
 }
 
 export function ChooseGame() {
-	const $contnet = d.createElement("div");
-   $contnet.id = "view-choose_game";
-	$contnet.innerHTML = `
+	const $container = d.createElement("div");
+   $container.id = "view-choose_game";
+	$container.innerHTML = `
       <div class="context">
          <main class="bloquePrincipal">
             <div class="position-relative">
@@ -54,6 +56,7 @@ export function ChooseGame() {
                               >
                               <div></div>
                               <select
+                                 id="selec_subjets"
                                  class="form-select form-select-lg mb-3 fw-light"
                                  style="
                                     font-size: 15px;
@@ -181,23 +184,8 @@ export function ChooseGame() {
             </div>
          </main>
       </div>
-
-      <div class="areaPurple1">
-         <ul class="circles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-         </ul>
-      </div>
    `;
-	return $contnet;
+	return $container;
 }
 //#endregion FUNCIONES DE RENDERIZADO
 
@@ -205,8 +193,26 @@ export function ChooseGame() {
 //#region FUNCIONES LOGICAS
 d.addEventListener("click", function(e) {
    if (e.target.matches("#view-choose_game #btn_start") || e.target.matches("#view-choose_game #btn_start *")) {
-      console.log("choose game");
-      // route("start-game");
+      route("game");
    }
 })
+
+export const fillData_chooseGame = async () => {
+   let objResponse = await GET_fetchRequestAsync(api.SUBJETS, api.GET, getToken());
+   const subjets = objResponse.data;
+   objResponse = await GET_fetchRequestAsync(api.DIFFICULTS, api.GET, getToken());
+   const difficults = objResponse.data;
+
+   let options = `<option class="fw-light" value="-1">Elige una opción...</option>`;
+   subjets.map(s => {
+      options += `<option class="fw-light" value="${s.subjet_id}">${s.subjet_name}</option>`;
+   });
+   d.querySelector("#selec_subjets").innerHTML = options;
+
+   let chk_difficults;
+   difficults.map(d => {
+      // chk_difficults +=
+   })
+   
+}
 //#endregion FUNCIONES LOGICAS

@@ -23,8 +23,8 @@ export function StartHeaders() {
 }
 
 export function Start() {
-	const $contnet = d.createElement("div");
-	$contnet.innerHTML = `
+	const $container = d.createElement("div");
+	$container.innerHTML = `
       <div class="context">
          <main class="bloquePrincipal">
             <div class="position-relative">
@@ -36,23 +36,8 @@ export function Start() {
             </div>
          </main> 
       </div>
-
-      <div class="areaPurple1" >
-         <ul class="circles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-         </ul>
-      </div>
    `;
-	return $contnet;
+	return $container;
 }
 //#endregion FUNCIONES DE RENDERIZADO
 

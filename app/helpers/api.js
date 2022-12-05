@@ -5,14 +5,20 @@ UPDATE = "UPDATE",
 DELETE = "DELETE",
 PATCH = "PATCH",
 PROTOCOL = "http://",
-NAME = "127.0.0.1:8000",
-DOMAIN = `${PROTOCOL}${NAME}`,
+HOST = "127.0.0.1:8000",
+DOMAIN = `${PROTOCOL}${HOST}`,
 API_URL = `${DOMAIN}/api`,
 SIGNUP = `${API_URL}/signup`,
 LOGIN = `${API_URL}/login`,
 LOGOUT = `${API_URL}/logout`,
 USERS = `${API_URL}/users`,
-ROLES = `${API_URL}/roles`
+ROLES = `${API_URL}/roles`,
+GAMES = `${API_URL}/games`,
+SUBJETS = `${API_URL}/subjets`,
+DIFFICULTS = `${API_URL}/difficults`,
+TYPES_QUESTION = `${API_URL}/types_question`,
+ITEMS = `${API_URL}/items`,
+ANSWERS = `${API_URL}/answers`
 ;
 
 export default {
@@ -22,7 +28,7 @@ export default {
    DELETE,
    PATCH,
    PROTOCOL,
-   NAME,
+   HOST,
    DOMAIN,
    API_URL,
    SIGNUP,
@@ -30,4 +36,10 @@ export default {
    LOGOUT,
    USERS,
    ROLES,
+   GAMES,
+   SUBJETS,
+   DIFFICULTS,
+   TYPES_QUESTION,
+   ITEMS,
+   ANSWERS
 }
