@@ -13,24 +13,26 @@ function addStyles() {
          width: 300px;
          font-size: 20px;
          margin-left: 20px;
-      }
-   
-      .button1:hover {
+         }
+         
+         .button1:hover {
          color: #fff;
          background-color:#e10087;
-      }
-      
-      @media (max-width: 600px) {
+         }
+         
+         @media (max-width: 600px) {
+         
          .button1{
             background-color:var(--pinkHard);
             color: #fff;
             border-radius: 20px;
             width: 200px;
             font-size: 20px;
+         
+            }
          }
-      }
-      
-      @media (max-width: 400px) {
+         
+         @media (max-width: 400px) {
          .button1{
             background-color:var(--pinkHard);
             color: #fff;

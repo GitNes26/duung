@@ -12,18 +12,21 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		min-height: 100vh;
+		max-height: 100vh;
 		font-family: "Jost", sans-serif;
 		/* background-color: #4e54c8; */
 	}
 	.main {
+		position: absolute;
 		width: 30%;
 		height: 500px;
-		background: red;
+		/* background: red; */
 		overflow: hidden;
 		border-radius: 10px;
 		box-shadow: 5px 20px 50px #000;
 		/* background-color: #565eee; */
+		top: 50%;
+		transform: translateY(-50%);
 	}
 
 	#chk {
@@ -105,11 +108,13 @@
 		top: 25vh;
 		width: 80%;
 		height: 800px;
-		background: red;
+		/* background: red; */
 		overflow: hidden;
 		border-radius: 10px;
 		box-shadow: 5px 20px 50px #000;
 		background-color: #565eee;
+		top: 50%;
+		transform: translateY(-50%);
 	}
 	label {
 		color: #fff;
