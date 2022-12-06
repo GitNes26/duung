@@ -1,3 +1,4 @@
+import { SideBar } from "../components/SideBar.js";
 import { route } from "../helpers/helpers.js";
 
 const d = document;
@@ -26,19 +27,29 @@ export function StartHeaders() {
 
 export function Start() {
 	const $container = d.createElement("div");
-	$container.innerHTML = `
-      <div class="context">
-         <main class="bloquePrincipal">
-            <div class="position-relative">
-               <h1 class="position-absolute title__p1 start-50 translate-middle-x">Comenzar Trivia</h1>
-               <img class="position-absolute  start-50 translate-middle-x img__central" src="/app/assets/images/trivia.png"/>
-               <div class="position-absolute  start-50 translate-middle-x button__central" >
-                  <img id="btn_start-start" class="push button__size" type="button"  src="/app/assets/images/play2.png" width="130px;"/>
-               </div>
+	const $context = d.createElement("div");
+   const $fragment = d.createDocumentFragment();
+
+   $container.id = "view-start_trivia";
+
+   $fragment.appendChild(SideBar());
+   
+   $context.classList.add("context");
+	$context.innerHTML = `
+      <main class="bloquePrincipal">
+         <div class="position-relative">
+            <h1 class="position-absolute title__p1 start-50 translate-middle-x">Comenzar Trivia</h1>
+            <img class="position-absolute  start-50 translate-middle-x img__central" src="/app/assets/images/trivia.png"/>
+            <div class="position-absolute  start-50 translate-middle-x button__central" >
+               <img id="btn_start-start" class="push button__size" type="button"  src="/app/assets/images/play2.png" width="130px;"/>
             </div>
-         </main> 
-      </div>
+         </div>
+      </main> 
    `;
+   $fragment.appendChild($context);
+
+   $container.innerHTML = null;
+   $container.appendChild($fragment);
 	return $container;
 }
 //#endregion FUNCIONES DE RENDERIZADO

@@ -39,6 +39,11 @@ body {
 	max-height: 100vh;
 	overflow-y: hidden !important;
 }
+
+#root {
+	overflow-y: scroll;
+}
+
 .text1__game {
 	font-size: 27px;
 }
