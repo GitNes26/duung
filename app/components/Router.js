@@ -6,6 +6,10 @@ import { SplashHeaders, Splash } from "../views/Splash.js";
 import { MainHeaders, Main } from "../views/Main.js";
 import { Start, StartHeaders } from "../views/StartTrivia.js";
 import { ChooseGame, ChooseGameHeaders } from "../views/ChooseGame.js";
+import { fillData, Profile, ProfileHeaders } from "../views/Profile.js";
+import { getScore, Score, ScoreHeaders } from "../views/Score.js";
+import { Cultiva, CultivaHeaders } from "../views/Cultiva.js";
+import { Configuracion, ConfiguracionHeaders } from "../views/Configuracion.js";
 
 const d = document;
 const w = window;
@@ -36,7 +40,22 @@ export async function Router() {
    } else if (hash === "#/choose-game") {
       await ChooseGameHeaders();
       await $root.appendChild(ChooseGame());
-   } 
+   } else if(hash === "#/profile"){
+      await ProfileHeaders();
+      const obj = await fillData();
+      await $root.appendChild(Profile(obj));
+      // $root.innerHTML="<h1>perfil</h1>"
+   }else if(hash === "#/score"){
+      const obj = await getScore();
+      await ScoreHeaders();
+      await $root.appendChild(Score(obj));
+   }else if(hash === "#/cultiva"){
+      await CultivaHeaders();
+      await $root.appendChild(Cultiva());
+   }else if(hash === "#/configuracion"){
+      await ConfiguracionHeaders();
+      await $root.appendChild(Configuracion());
+   }
    
    else {
       $root.innerHTML = `

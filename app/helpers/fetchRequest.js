@@ -1,4 +1,5 @@
 import { CloseLoader, Loader } from "../components/Loader.js";
+import { getToken } from "./helpers.js";
 
 export async function fetchRequestAsync(url, method, data={}, token=false, modal_close=null) {
    // let {url, cbSuccess} = props;

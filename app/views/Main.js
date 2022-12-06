@@ -66,10 +66,10 @@ export function Main() {
 
                      <a class="e__sidebar1 d-inline-block text-truncate purpleScroll" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-gamepad icon"></i></i>Area de juego</a>
 
-                     <a class="e__sidebar1 d-inline-block text-truncate greenScroll" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-coins icon"></i>Score</a>
-                     <a class="e__sidebar1 d-inline-block text-truncate yellowScroll" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-brain icon"></i>Cultiva tu mente</a>
-                     <a class="e__sidebar1 d-inline-block text-truncate pinkScroll" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-user icon"></i>Perfil</a>
-                     <a class="e__sidebar1 d-inline-block text-truncate blueScroll" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-wrench icon"></i>Configuraciones</a>
+                     <a class="e__sidebar1 d-inline-block text-truncate greenScroll btn_score" data-bs-parent="#sidebar" > <i class="fas fa-solid fa-coins icon"></i>Score</a>
+                     <a class="e__sidebar1 d-inline-block text-truncate yellowScroll btn_cultiva" data-bs-parent="#sidebar" > <i class="fas fa-solid fa-brain icon"></i>Cultiva tu mente</a>
+                     <a class="e__sidebar1 d-inline-block text-truncate pinkScroll btn_profile" data-bs-parent="#sidebar"> <i class="fas fa-solid fa-user icon"></i>Perfil</a>
+                     <a class="e__sidebar1 d-inline-block text-truncate blueScroll btn_configuracion" data-bs-parent="#sidebar" > <i class="fas fa-solid fa-wrench icon"></i>Configuraciones</a>
 
                      <a id="btn_logout" class="e__sidebar1 d-inline-block text-truncate logout" data-bs-parent="#sidebar"> <i class="fas fa-sign-out-alt icon"></i>Cerrar Sesión</a>
                      
@@ -106,19 +106,19 @@ export function Main() {
                   </div>
 
                   <div class="col-sm-3">
-                     <div class="content shadow push pink__bloc pinkScroll">
+                     <div class="content shadow push pink__bloc pinkScroll btn_profile">
                            <img src="/app/assets/images/Avatar/Iperfil.png" class="images__bloc"/>
                      </div>
-                     <div class="content shadow push yellow__bloc yellowScroll">
+                     <div class="content shadow push yellow__bloc yellowScroll btn_cultiva">
                            <img src="/app/assets/images/Avatar/ICultiva.png" class="images__bloc"/>
                      </div>
                                  
                   </div>
                   <div class="col-sm-3">
-                     <div class="content shadow push green__bloc greenScroll">
+                     <div class="content shadow push green__bloc greenScroll btn_score">
                            <img src="/app/assets/images/Avatar/IScore.png" class="images__bloc"/>
                      </div>
-                     <div class="content shadow push blue__bloc blueScroll">
+                     <div class="content shadow push blue__bloc blueScroll btn_configuracion">
                            <img src="/app/assets/images/Avatar/IConfiguracion.png" class="images__bloc"/>
                      </div>
                   </div>
@@ -163,19 +163,19 @@ export function Main() {
 
 //#region FUNCIONES LOGICAS
 d.addEventListener("click", function(e) {
-   if (e.target.matches("#view-main .yellowScroll") || e.target.matches("#view-main .yellowScroll *")) {
+   if (e.target.matches("#view-main .btn_cultiva") || e.target.matches("#view-main .btn_cultiva *")) {
       yellowScroll();
    }
-   if (e.target.matches("#view-main .pinkScroll") || e.target.matches("#view-main .pinkScroll *")) {
+   if (e.target.matches("#view-main .btn_profile") || e.target.matches("#view-main .btn_profile *")) {
       pinkScroll();
    }
-   if (e.target.matches("#view-main .greenScroll") || e.target.matches("#view-main .greenScroll *")) {
+   if (e.target.matches("#view-main .btn_score") || e.target.matches("#view-main .btn_score *")) {
       greenScroll();
    }
    if (e.target.matches("#view-main .purpleScroll") || e.target.matches("#view-main .purpleScroll *")) {
       purpleScroll();
    }
-   if (e.target.matches("#view-main .blueScroll") || e.target.matches("#view-main .blueScroll *")) {
+   if (e.target.matches("#view-main .btn_configuracion") || e.target.matches("#view-main .btn_configuracion *")) {
       blueScroll();
    }
 
@@ -191,16 +191,19 @@ d.addEventListener("DOMContentLoaded", () => {
 function yellowScroll() {
    const contenedor = document.querySelector(".contenedor");
    contenedor.style.backgroundColor = "#e09d01";
+   setTimeout(() => route("cultiva") , 500);
 }
 
 function pinkScroll() {
    const contenedor = document.querySelector(".contenedor");
    contenedor.style.backgroundColor = "#9a47c1";
+   setTimeout(() => route("profile") , 500);
 }
 
 function greenScroll() {
    const contenedor = document.querySelector(".contenedor");
    contenedor.style.backgroundColor = "#7CCA4D";
+   setTimeout(() => route("score") , 500);
 }
 
 function purpleScroll() {
@@ -212,6 +215,7 @@ function purpleScroll() {
 function blueScroll() {
    const contenedor = document.querySelector(".contenedor");
    contenedor.style.backgroundColor = "#26A6DD";
+   setTimeout(()=>route("configuracion"),500);
 }
 
 const logOut = async () => {
