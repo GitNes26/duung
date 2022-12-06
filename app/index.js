@@ -5,7 +5,13 @@ const audio_theme = document.querySelector("#audio_theme")
 audio_theme.volume = 0.004;
 
 document.addEventListener("mouseover", () => {
-   audio_theme.muted=false
+   audio_theme.muted=false;
+})
+document.addEventListener("click", () => {
+   audio_theme.muted=false;
+})
+window.addEventListener("mouseover", () => {
+   audio_theme.muted=false;
 })
 
 // audio_theme.play();

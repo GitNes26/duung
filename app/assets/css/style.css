@@ -44,6 +44,10 @@ body {
 	overflow-y: scroll;
 }
 
+.nav a {
+	cursor: pointer;
+}
+
 .text1__game {
 	font-size: 27px;
 }
@@ -393,7 +397,7 @@ body {
 	font-family: 'LuckiestGuy Regular';font-size:25px;color:#ffff;
 }
 .reloj__position{
-	top: 3vh;left: 12vh;background-color: #878acb;border: 13px solid  #610184;border-radius:50%;width:120px;height:120px;position: fixed;z-index:4;padding-top: 25px;padding-left: 10px;
+	top: 3vh;right: 5%;background-color: #878acb;border: 13px solid  #610184;border-radius:50%;width:120px;height:120px;position: fixed;z-index:4;padding-top: 25px;padding-left: 10px;
 }
 .leter__score{
 	font-family: 'LuckiestGuy Regular';color:#b0b1c7;
@@ -732,7 +736,7 @@ body {
 	}
 
 	.reloj__position{
-		 top: 4vh;left: 1vh;background-color: #878acb;border: 13px solid  #610184;border-radius:50%;width:120px;height:120px;position: fixed;z-index:4;padding-top: 25px;padding-left: 10px;
+		 top: 4vh;right: 1%;background-color: #878acb;border: 13px solid  #610184;border-radius:50%;width:120px;height:120px;position: fixed;z-index:4;padding-top: 25px;padding-left: 10px;
 	}
  
 

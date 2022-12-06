@@ -40,7 +40,7 @@ export async function Router() {
       await ChooseGameHeaders();
       await $root.appendChild(ChooseGame());
       await fillData_chooseGame();
-   } else if (hash === "#/game") {
+   } else if (hash.includes("#/game")) {
       await GameHeaders();
       await $root.appendChild(Game());
    } 
