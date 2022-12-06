@@ -23,7 +23,7 @@ export function Login() {
 	$container.innerHTML = `
       <div class="body">
          <div class="main" style="z-index: 2">
-            <input type="checkbox" id="chk" aria-hidden="true" />
+            <input type="checkbox" id="chk" hidden="true" />
 
             <div class="signup">
                <form id="form_signup">
