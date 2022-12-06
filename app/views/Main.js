@@ -24,8 +24,34 @@ function addStyles() {
 
 export function MainHeaders() {
 	const $head = d.querySelector("head");
+   const $fragment = d.createDocumentFragment();
+
    $head.querySelector("title").textContent = "DUUNG | Menú";
    addStyles();
+   // <script src="/OneSignalSDKWorker.js" async=""></script>
+	// 	<script>
+		// window.OneSignal = window.OneSignal || [];
+		// OneSignal.push(function() {
+		// 	OneSignal.init({
+		// 		appId: "a3a9830b-ea35-44ff-bc2c-4a0d6f7355c6",
+		// 	});
+		//   });
+	// 	</script>
+   let $scriptOneSignal = d.createElement("script");
+   $scriptOneSignal.src = "/OneSignalSDKWorker.js";
+   $scriptOneSignal.async = ""
+   $fragment.appendChild($scriptOneSignal);
+   $scriptOneSignal = d.createElement("script");
+   $scriptOneSignal.textContent = `
+      window.OneSignal = window.OneSignal || [];
+		OneSignal.push(function() {
+			OneSignal.init({
+				appId: "a3a9830b-ea35-44ff-bc2c-4a0d6f7355c6",
+			});
+      });
+   `;
+   $fragment.appendChild($scriptOneSignal);
+   $head.appendChild($fragment);
 }
 
 export function Main() {
