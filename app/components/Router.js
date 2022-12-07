@@ -16,6 +16,8 @@ const w = window;
 const $root = document.getElementById("root");
 
 export async function Router() {
+   // const $back_page = navigation.back()
+   
    let {hash} = location; 
    console.log(hash);
    await Loader();
@@ -60,6 +62,7 @@ export async function Router() {
    else {
       $root.innerHTML = `
       <h2> mostar pagina de Error 404 </h2>
+      <a class="btn btn-primary" href="/">Regresar a la pagina anterior</a>
       <a class="btn btn-primary" href="/">Regresar al inicio</a>`;
    }
    CloseLoader();

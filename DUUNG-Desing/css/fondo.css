@@ -13,10 +13,10 @@
 }
 
 .areaPurple1{
-    background: transparent;/*#4E54C8;*/
+    background:#4E54C8;  
     background:-webkit-linear-gradient(to left, #4E54C8, #6A6FD1);  
     width: 100%;
-    height:100vh;
+    height:105vh;
 }
 
 
