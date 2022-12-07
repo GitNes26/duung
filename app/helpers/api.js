@@ -12,7 +12,8 @@ SIGNUP = `${API_URL}/signup`,
 LOGIN = `${API_URL}/login`,
 LOGOUT = `${API_URL}/logout`,
 USERS = `${API_URL}/users`,
-ROLES = `${API_URL}/roles`
+ROLES = `${API_URL}/roles`,
+GAMES = `${API_URL}/games`
 ;
 
 export default {
@@ -30,4 +31,5 @@ export default {
    LOGOUT,
    USERS,
    ROLES,
+   GAMES,
 }

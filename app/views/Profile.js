@@ -1,6 +1,7 @@
 import api from "../helpers/api.js";
 import { fetchRequestAsync, GET_fetchRequestAsync } from "../helpers/fetchRequest.js";
 import { getId, getToken, route } from "../helpers/helpers.js";
+import { mostrarAlerta, showToast } from "../helpers/validates.js";
 
 const d = document;
 
@@ -30,46 +31,60 @@ export  function Profile(props) {
 	const $content = d.createElement("div");
    $content.id = "view-profile";
 	$content.innerHTML = `
-            <div class="context">
-            <div class="position-relative">
-               <img src="/app/assets/images/Viñetas/Perfil.png" class="circlePurple position-absolute top-0 end-0" />
-            </div>
+   <div class="context">
+   <div class="position-relative">
+      <img src="/app/assets/images/Viñetas/Perfil.png" class="circlePurple position-absolute top-0 end-0" />
+   </div>
+   <main class="bloquePrincipal">
+      <div class="space__cardP">
+         <div class="bg__cardP">
+            <div class="scroll__cardP">
+               <h1 class="text-center title__p">Perfil</h1>
 
-            <main class="bloquePrincipal">
-               <div class="space__cardP">
-                  <div class="bg__cardP">
-                     <div class="scroll__cardP">
-                        <h1 class="text-center title__p">Perfil</h1>
-
-                        <div class="col-md-8">
-                           <div>
-                              <label class="label__p fw-bold">Nombre de usuario</label>
-                              <p class="text__p fw-light" id="output_nom_us">${props.username}</p>
-                           </div>
-                           <div>
-                              <label class="label__p fw-bold">Nombre</label>
-                              <p class="text__p fw-light">${props.name}</p>
-                           </div>
-                           <div>
-                              <label class="label__p fw-bold">Rol</label>
-                              <p class="text__p fw-light">${props.role_name}</p>
-                           </div>
-
-                           <div>
-                              <label class="label__p fw-bold">Nueva Contraseña</label>
-                              <input type="password" class="form-control input__p" />
-                           </div>
-                              <div>
-                              <label class="label__p fw-bold">Confirmar contreseña</label>
-                              <input type="password" class="form-control input__p" />
-                              <button type="submit" class="btn button__p" id="btn_aceptar_profile">Aceptar</button>
-                           </div>
-                        </div>
-                     </div>
+               <div class="col-md-8">
+                  <div>
+                     <label class="label__p fw-bold">Nombre de usuario</label>
+                     <p class="text__p fw-light">${props.username}</p>
+                  </div>
+                  <div>
+                     <label class="label__p fw-bold">Nombre</label>
+                     <p class="text__p fw-light">${props.name}</p>
+                  </div>
+                  <div>
+                     <label class="label__p fw-bold">Rol Usuari</label>
+                     <p class="text__p fw-light">${props.role_name}</p>
+                  </div>
+                  <div>
+                     <label class="label__p fw-bold">Nueva Contraseña</label>
+                     <input type="text" class="form-control input__p " id="pass1" />
+                  </div>
+                  <div>
+                     <label class="label__p fw-bold">Confirmar contreseña</label>
+                     <input type="text" class="form-control input__p" id="pass2" />
+                     <button type="submit" class="btn button__p text__p" id="btn_aceptar_profile">Aceptar</button>
                   </div>
                </div>
-            </main>
+            </div>
+
          </div>
+      </div>
+
+   </main>
+</div>
+<div class="areaPink">
+   <ul class="circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+   </ul>
+</div>
    `;
 	return $content;
 }
@@ -82,11 +97,31 @@ d.addEventListener("click", function(e) {
    }
 })
 const updatePassword= async()=>{
-   let info ={
-
+   let pass1 =d.querySelector("#view-profile #pass1").value;
+   let pass2 =d.querySelector("#view-profile #pass2").value;
+   if(pass1!=pass2 || (pass1==='' || pass2==='')){
+      showToast('error','Las constraseñas no coinciden');
+      return;  
    }
-   const res = await fetchRequestAsync(api.USERS,api.UPDATE,info,true)
-   // console.log("actualizando la contraseña");
+   const user_info = await  fillData();
+   // console.log(user_info);
+
+   // console.log("hola mudniasaj");
+   let newpass = pass2;
+   let info ={
+      'id': getId(),
+      'name': user_info.name,
+      'last_name':user_info.last_name,
+      'email' :user_info.email,
+      'username' :user_info.username,
+      'password' : newpass,
+      'phone' :user_info.phone,
+      'role_id' :user_info.role_id
+   }
+   const res = await fetchRequestAsync(`${api.USERS}`,"PUT",info,getToken())
+   showToast(res.alert_icon,res.message);
+
+   // console.log(res);
 }
 export const fillData = async () =>{
    const res= await GET_fetchRequestAsync(`${api.USERS}/${getId()}`,api.GET,getToken());
