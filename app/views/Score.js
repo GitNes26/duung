@@ -39,20 +39,20 @@ export  function Score(props) {
       <div class="card push item__Sc" style="border-radius:20px;">
 
       <div class="card-body text-center">
-      <h5 class="card-title fw-light">${item.game_title}</h5>
+      <h5 class="card-title fw-light">${item.round_name}</h5>
       <div class="row">
          <div class="col-md-3">
             <img class="d-md-block d-none img__Sc" src="app/assets/images/9.png" />
          </div>
          <div class="col-md-9">
             <div class="progress">
-               <div class="progress-bar bg-info" role="progressbar" style="width: ${item.game_rate}%;"
-                  aria-valuenow="${item.game_rate}" aria-valuemin="0" aria-valuemax="100">${item.game_rate}%</div>
+               <div class="progress-bar bg-info" role="progressbar" style="width: ${item.rate}%;"
+                  aria-valuenow="${item.rate}" aria-valuemin="0" aria-valuemax="100">${item.rate}%</div>
             </div>
 
             <div class="bloc__sc1">
-               <p class="fw-light">High Score: ${item.game_score}</p>
-               <p class="fw-light bloc__sc2">Last Score: 500</p>
+               <p class="fw-light">High Score: ${item.maxscore}</p>
+               <p class="fw-light bloc__sc2">Last Score:  ${item.lastscore}</p>
             </div>
          </div>
       </div>
@@ -128,10 +128,10 @@ d.addEventListener("click", function(e) {
 // }
 //#endregion FUNCIONES LOGICAS
 export const getScore = async () =>{
-   const res= await GET_fetchRequestAsync(`${api.GAMES}`,api.GET,getToken());
+   const res= await GET_fetchRequestAsync(`${api.GAMES}/scores/${getId()}`,api.GET,getToken());
    let obj_res = res.data;
    // // const output_nom_us = d.querySelector("#view-profile #output_nom_us")
    // // output_nom_us.textContent =obj_res.username;
- console.log(obj_res);
+//  console.log(obj_res);
    return obj_res;
 }
