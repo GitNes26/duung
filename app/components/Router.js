@@ -5,11 +5,12 @@ import { LoginHeaders, Login } from "../views/Login.js";
 import { SplashHeaders, Splash } from "../views/Splash.js";
 import { MainHeaders, Main } from "../views/Main.js";
 import { Start, StartHeaders } from "../views/StartTrivia.js";
-import { ChooseGame, ChooseGameHeaders } from "../views/ChooseGame.js";
+import { ChooseGame, ChooseGameHeaders, fillData_chooseGame } from "../views/ChooseGame.js";
 import { fillData, Profile, ProfileHeaders } from "../views/Profile.js";
 import { getScore, Score, ScoreHeaders } from "../views/Score.js";
 import { Cultiva, CultivaHeaders } from "../views/Cultiva.js";
 import { Configuracion, ConfiguracionHeaders } from "../views/Configuracion.js";
+import { Game, GameHeaders } from "../views/Game.js";
 
 const d = document;
 const w = window;
@@ -42,6 +43,10 @@ export async function Router() {
    } else if (hash === "#/choose-game") {
       await ChooseGameHeaders();
       await $root.appendChild(ChooseGame());
+      await fillData_chooseGame();
+   } else if (hash === "#/game") {
+      await GameHeaders();
+      await $root.appendChild(Game());
    } else if(hash === "#/profile"){
       await ProfileHeaders();
       const obj = await fillData();
