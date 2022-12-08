@@ -1,7 +1,7 @@
 import { SideBar } from "../components/SideBar.js";
 import api from "../helpers/api.js";
 import { fetchRequestAsync, GET_fetchRequestAsync } from "../helpers/fetchRequest.js";
-import { getCookie, route, getToken, setCookie} from "../helpers/helpers.js";
+import { getCookie, route, getToken, setCookie, shuffleArray} from "../helpers/helpers.js";
 
 const d = document;
 
@@ -60,8 +60,9 @@ export function Start() {
 //#region FUNCIONES LOGICAS
 d.addEventListener("click", function(e) {
    if (e.target.matches("#btn_start-start") || e.target.matches("#btn_start-start *")) {
-      // route("game");
-      console.log(JSON.parse(getCookie("round")))
+
+      setCookie("round",JSON.stringify(shuffleArray(JSON.parse(getCookie("round")))))
+      route("game");
    }
 })
 
@@ -69,6 +70,6 @@ export const getRound = async() => {
    const fetchResponse = await GET_fetchRequestAsync(`${api.GAMES}/round/${getCookie("active_round")}`, api.GET, getToken())
    const objResponse = fetchResponse.data;
    console.log("🚀 ~ file: StartTrivia.js:70 ~ fillRound ~ fetchResponse", fetchResponse)
-   setCookie("round", JSON.stringify(objResponse))
+   setCookie("round", JSON.stringify(objResponse));
 };
 //#endregion FUNCIONES LOGICAS

@@ -25,57 +25,90 @@ export function ScoreHeaders() {
 }
 
 export  function Score(props) {
+   // export  function Score() {
    console.log("score",props);
+   console.log(props.length);
    // const data = await fillData();
 	const $content = d.createElement("div");
    $content.id = "view-score";
+   // $content.innerHTML=`<p>hola mundo</p>`
+   let anotherhtml = '';
+   if(props.length >0){
+   props.map(item=>{
+      anotherhtml +=    `
+      <div class="card push item__Sc" style="border-radius:20px;">
+
+      <div class="card-body text-center">
+      <h5 class="card-title fw-light">${item.game_title}</h5>
+      <div class="row">
+         <div class="col-md-3">
+            <img class="d-md-block d-none img__Sc" src="app/assets/images/9.png" />
+         </div>
+         <div class="col-md-9">
+            <div class="progress">
+               <div class="progress-bar bg-info" role="progressbar" style="width: ${item.game_rate}%;"
+                  aria-valuenow="${item.game_rate}" aria-valuemin="0" aria-valuemax="100">${item.game_rate}%</div>
+            </div>
+
+            <div class="bloc__sc1">
+               <p class="fw-light">High Score: ${item.game_score}</p>
+               <p class="fw-light bloc__sc2">Last Score: 500</p>
+            </div>
+         </div>
+      </div>
+
+   </div>
+   </div>`
+   })}else{
+      anotherhtml +=    `
+      <div class="card push item__Sc" style="border-radius:20px;">
+
+      <div class="card-body text-center">
+      <h5 class="card-title fw-light">OOPS!</h5>
+      <div class="row">
+         <div class="col-md-3">
+            <img class="d-md-block d-none img__Sc" src="app/assets/images/9.png" />
+         </div>
+         <div class="col-md-9">
+            <h5 class="card-title fw-light">Parece que no hay informacion para mostrar</h5>
+
+
+            <div class="bloc__sc1">
+               <p class="fw-light">High Score: 0</p>
+               <p class="fw-light bloc__sc2">Last Score: 0</p>
+            </div>
+         </div>
+      </div>
+
+   </div>
+   </div>`
+   }
 	$content.innerHTML = `
-//    <div class="context">
-//    <div class="position-relative">
-//       <img src="/app/assets/images/Viñetas/Score.png" class="circlePurple position-absolute top-0 end-0" />
-//    </div>
+   <div class="context">
+   <div class="position-relative">
+      <img src="/app/assets/images/Viñetas/Score.png" class="circlePurple position-absolute top-0 end-0" />
+   </div>
 
-//    <main class="bloquePrincipal">
-//       <div class="space__cardSc">
-//          <h1 class="text-center title__Sc">Score</h1>
-//          <div class="bg__cardSc contenedor-light">
+   <main class="bloquePrincipal">
+      <div class="space__cardSc">
+         <h1 class="text-center title__Sc">Score</h1>
+         <div class="bg__cardSc contenedor-light">
 
-//             <div class="col-md-12">
+            <div class="col-md-12">
 
-//                <div class="row">
-//                   <div class="col">
-//                      <div class="card push item__Sc" style="border-radius:20px;">
-//                         <div class="card-body text-center">
-//                            <h5 class="card-title fw-light">${props.game_title}</h5>
-//                            <div class="row">
-//                               <div class="col-md-3">
-//                                  <img class="d-md-block d-none img__Sc" src="app/assets/images/9.png" />
-//                               </div>
-//                               <div class="col-md-9">
-//                                  <div class="progress">
-//                                     <div class="progress-bar bg-info" role="progressbar" style="width: ${props.game_rate}%;"
-//                                        aria-valuenow="${props.game_rate}" aria-valuemin="0" aria-valuemax="100">${props.game_rate}%</div>
-//                                  </div>
+               <div class="row">
+                  <div class="col">
+                        ${anotherhtml}                  
+                  </div>
+               </div>
 
-//                                  <div class="bloc__sc1">
-//                                     <p class="fw-light">High Score: ${props.game_score}</p>
-//                                     <p class="fw-light bloc__sc2">Last Score: 500</p>
-//                                  </div>
-//                               </div>
-//                            </div>
+            </div>
 
-//                         </div>
-//                      </div>
-//                   </div>
-//                </div>
+         </div>
+      </div>
 
-//             </div>
-
-//          </div>
-//       </div>
-
-//    </main>
-// </div>
+   </main>
+</div>
    `;
 	return $content;
 }
@@ -96,10 +129,9 @@ d.addEventListener("click", function(e) {
 //#endregion FUNCIONES LOGICAS
 export const getScore = async () =>{
    const res= await GET_fetchRequestAsync(`${api.GAMES}`,api.GET,getToken());
-   console.log(res);
-   // let obj_res = res.data[0];
+   let obj_res = res.data;
    // // const output_nom_us = d.querySelector("#view-profile #output_nom_us")
    // // output_nom_us.textContent =obj_res.username;
-   // console.log(obj_res);
-   // return obj_res;
+ console.log(obj_res);
+   return obj_res;
 }

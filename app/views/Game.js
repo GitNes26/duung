@@ -1,5 +1,5 @@
 import { SideBar } from "../components/SideBar.js";
-import { route } from "../helpers/helpers.js";
+import { getCookie, route } from "../helpers/helpers.js";
 
 const d = document;
 
@@ -165,6 +165,7 @@ export function Game() {
 
    $container.innerHTML = null;
    $container.appendChild($fragment);
+   console.log(JSON.parse(getCookie("round")));
 	return $container;
 }
 //#endregion FUNCIONES DE RENDERIZADO

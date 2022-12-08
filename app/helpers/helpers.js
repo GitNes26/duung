@@ -51,3 +51,5 @@ export const playAudio = (audio) => {
    event_audio.src = `/app/assets/audios/${audio}`;
    event_audio.play();
 }
+
+export const shuffleArray = (inputArray) => inputArray.sort(()=> Math.random() - 0.5);

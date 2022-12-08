@@ -13,9 +13,8 @@ export function Loader() {
    // const showBlocUI = () => {
    $.blockUI({
       message: dialogoBlockUI,
-      css: { backgroundColor: null, color: "#313131", border: null },
+      css: { backgroundColor: null, color: "#313131", border: null},
    });
-   // }
 }
 
 export function CloseLoader() {

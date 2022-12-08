@@ -8,7 +8,7 @@ import { getRound, Start, StartHeaders } from "../views/StartTrivia.js";
 import { ChooseGame, ChooseGameHeaders, fillData_chooseGame } from "../views/ChooseGame.js";
 import { fillData, Profile, ProfileHeaders } from "../views/Profile.js";
 import { getScore, Score, ScoreHeaders } from "../views/Score.js";
-import { Cultiva, CultivaHeaders } from "../views/Cultiva.js";
+import { Cultiva, CultivaHeaders, getTips } from "../views/Cultiva.js";
 import { Configuracion, ConfiguracionHeaders } from "../views/Configuracion.js";
 import { Game, GameHeaders } from "../views/Game.js";
 
@@ -61,8 +61,9 @@ export async function Router() {
       await ScoreHeaders();
       await $root.appendChild(Score(obj));
    }else if(hash === "#/cultiva"){
+      const tips =await getTips();
       await CultivaHeaders();
-      await $root.appendChild(Cultiva());
+      await $root.appendChild(Cultiva(tips));
    }else if(hash === "#/configuracion"){
       await ConfiguracionHeaders();
       await $root.appendChild(Configuracion());
