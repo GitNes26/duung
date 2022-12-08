@@ -1,9 +1,11 @@
 import { Item } from "../components/Item.js";
 import { SideBar } from "../components/SideBar.js";
-import { getCookie, route } from "../helpers/helpers.js";
+import { getCookie, route, setCookie } from "../helpers/helpers.js";
+import { getRound } from "./StartTrivia.js";
 
 const d = document;
-
+let round_pos;
+let answers_correct;
 //#region FUNCIONES DE RENDERIZADO
 function addStyles() {
 	const $styles = d.querySelector("head style");
@@ -27,6 +29,12 @@ export function GameHeaders() {
 }
 
 export function Game() {
+   round_pos = 0;
+   let round_1 = JSON.parse(getCookie("round"))
+   round_1 = round_1[round_pos];
+   answers_correct = 0;
+   setCookie("answers_correct", answers_correct)
+   Counter(round_1.item_time);
 	const $container = d.createElement("div");
    const $context = d.createElement("div");
    const $fragment = d.createDocumentFragment();
@@ -38,17 +46,17 @@ export function Game() {
    
 
    $context.classList.add("context");
-	$context.innerHTML = `
+	let item = `
       <div class="shadow reloj__position">
          <p class="reloj__let">00:00</p>
       </div>
 
       <main class="bloquePrincipal">
-         <div class="position-relative">`;
+         <div class="position-relative" id="item_container">`;
 
-      $container.innerHTML += Item()
+            item += Item(round_1);
          
-      $container.innerHTML +=`
+   item +=`
          </div>
          <img
             class="d-md-block d-none position-absolute start-50 translate-middle-x img__central1"
@@ -56,11 +64,11 @@ export function Game() {
          />
       </main>
    `;
+   $context.innerHTML = item;
    $fragment.appendChild($context);
 
    $container.innerHTML = null;
    $container.appendChild($fragment);
-   console.log(JSON.parse(getCookie("round")));
 	return $container;
 }
 //#endregion FUNCIONES DE RENDERIZADO
@@ -68,9 +76,8 @@ export function Game() {
 
 //#region FUNCIONES LOGICAS
 d.addEventListener("click", function(e) {
-   if (e.target.matches("#view-game #btn_start") || e.target.matches("#view-game #btn_start *")) {
-      console.log("game");
-      // route("start-game");
+   if (e.target.matches("#view-game .btn_answer") || e.target.matches("#view-game .btn_answer *")) {
+      itemAnswer(e.target);
    }
 });
 
@@ -85,13 +92,52 @@ const secondsToString = (seconds) => {
    return hour + ':' + minute + ':' + second;
 }
 
-let time_of_question = 30;
-const Counter = () => {
-   setInterval(() => {
-      if (time_of_question < 0) time_of_question=30;
-      let time = secondsToString(time_of_question)
+const Counter = (time_question=5) => {
+   if (location.hash != "#/game") return
+   let counter = setInterval(() => {
+      if (location.hash != "#/game") clearInterval(counter);
+
+      if (time_question == 0) {
+         clearInterval(counter);
+         nextItem();
+      }
+      let time = secondsToString(time_question)
       d.querySelector("#view-game .reloj__let").textContent = time;
-      time_of_question -=1;
+      time_question -=1;
    }, 1000);
+}
+
+const showItem = async(round) => {
+   await console.log("icono de respuesta correcta | incorrecta");
+   setTimeout(() => {
+      const $item_container = d.querySelector("#item_container");
+      if (!round) return
+      $item_container.innerHTML = Item(round)
+      Counter(round.item_time);
+   }, 350);
+}
+
+const itemAnswer = (answer_element) => {
+   let element = answer_element.parentElement;
+   while (!element.classList.contains("btn_answer")) element = element.parentElement;
+   let time_clock = d.querySelector("#view-game .reloj__let").textContent
+   if (time_clock == "00:00") {
+      nextItem();
+   }
+   if (element.dataset.c == "0") console.log("incorrecta");
+   
+   console.log("correcta");
+   answers_correct++;
+   setCookie("answers_correct", answers_correct)
+   nextItem()
+}
+
+
+const nextItem = () => {
+   round_pos++;
+   let rounds = JSON.parse(getCookie("round"))
+   if (round_pos == rounds.length) route("finish"); //console.log("fin de las preguntas pasar a la vista de resultados y actualizar puntos y tabla de game");
+   const round = rounds[round_pos];
+   showItem(round)
 }
 //#endregion FUNCIONES LOGICAS

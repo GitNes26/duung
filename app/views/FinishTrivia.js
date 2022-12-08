@@ -21,29 +21,42 @@ function addStyles() {
       .button__p:hover{color: var(--white);border:1px #60028c;background-color: #60028c; -webkit-transform: scale(1.1) !important; transform: scale(1.04) !important;}}
    `;
 }
-export function StartHeaders() {
+export function FinishHeaders() {
    const $head = d.querySelector("head");
-   $head.querySelector("title").textContent = `DUUNG | Comenzar Trivia`;
+   $head.querySelector("title").textContent = `DUUNG | Trivia Finalizada`;
    addStyles();
 }
 
-export function Start() {
+let answers_correct;
+let round;
+
+export function Finish() {
+   answers_correct = getCookie("answers_correct") == undefined ? 0 : getCookie("answers_correct");
+   round = JSON.parse(getCookie("active_round"))
+   console.log(round);
 	const $container = d.createElement("div");
 	const $context = d.createElement("div");
    const $fragment = d.createDocumentFragment();
-
+   
    $container.id = "view-start_trivia";
-
+   
    $fragment.appendChild(SideBar());
+   const image = answers_correct <= round.correct_min ? "Loser.png" : "Winner.png";
    
    $context.classList.add("context");
 	$context.innerHTML = `
       <main class="bloquePrincipal">
          <div class="position-relative">
-            <h1 class="position-absolute title__p1 start-50 translate-middle-x">Comenzar Trivia</h1>
-            <img class="position-absolute  start-50 translate-middle-x img__central" src="/app/assets/images/trivia.png"/>
+            <h1 class="position-absolute title__p1 start-50 translate-middle-x">Partida Terminada</h1>
+            <img class="position-absolute  start-50 translate-middle-x img__central" src="/app/assets/images/${image}"/>
             <div class="position-absolute  start-50 translate-middle-x button__central" >
-               <img id="btn_start-start" class="push button__size" type="button"  src="/app/assets/images/play2.png" width="130px;"/>
+               <img id="btn_finish" class="push button__size" type="button"  src="/app/assets/images/return.png" width="130px;"/>
+            </div>
+         </div>
+
+         <div class="position-relative">
+            <div class="position-absolute bottom-0 end-0" style="top:80vh;margin-right:50px;">
+            <h1 class="leter__score">Score: ${answers_correct}</h1>
             </div>
          </div>
       </main> 
@@ -59,17 +72,26 @@ export function Start() {
 
 //#region FUNCIONES LOGICAS
 d.addEventListener("click", function(e) {
-   if (e.target.matches("#btn_start-start") || e.target.matches("#btn_start-start *")) {
-
-      setCookie("round",JSON.stringify(shuffleArray(JSON.parse(getCookie("round")))))
-      route("game");
+   if (e.target.matches("#btn_finish") || e.target.matches("#btn_finish *")) {
+      updateGame();
    }
 })
 
-export const getRound = async() => {
-   const round_id = JSON.parse(getCookie("active_round")).round_id;
-   const fetchResponse = await GET_fetchRequestAsync(`${api.GAMES}/round/${round_id}`, api.GET, getToken())
+export const updateGame = async() => {
+   const game_id = JSON.parse(getCookie("active_game"));
+   console.log("🚀 ~ file: FinishTrivia.js:81 ~ updateGame ~ game_id", game_id)
+   console.log(round.round_quantity_items);
+   const data = {
+      game_id,
+      game_score: answers_correct,
+      game_rate: (answers_correct/round.round_quantity_items)*100,
+      game_quantity_items_correct: answers_correct,
+   }
+   console.log("🚀 ~ file: FinishTrivia.js:83 ~ updateGame ~ data", data)
+   const fetchResponse = await fetchRequestAsync(`${api.GAMES}/complete`, api.PUT, data, getToken())
    const objResponse = fetchResponse.data;
+   console.log("🚀 ~ file: StartTrivia.js:70 ~ fillRound ~ fetchResponse", fetchResponse)
    setCookie("round", JSON.stringify(objResponse));
+   route("main");
 };
 //#endregion FUNCIONES LOGICAS

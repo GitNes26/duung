@@ -209,8 +209,9 @@ const beginGame = async () => {
    // return console.log(data);
    const fetchResponse = await fetchRequestAsync(api.GAMES,api.POST,data,getToken())
    const objResponse = fetchResponse.data;
+   console.log("🚀 ~ file: ChooseGame.js:212 ~ beginGame ~ objResponse", objResponse)
    setCookie("active_game",objResponse.game_id);
-   setCookie("active_round",objResponse.round_id);
+   setCookie("active_round",JSON.stringify(objResponse));
    route("start")
 }
 //#endregion FUNCIONES LOGICAS

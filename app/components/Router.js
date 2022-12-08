@@ -11,6 +11,7 @@ import { getScore, Score, ScoreHeaders } from "../views/Score.js";
 import { Cultiva, CultivaHeaders, getTips } from "../views/Cultiva.js";
 import { Configuracion, ConfiguracionHeaders } from "../views/Configuracion.js";
 import { Game, GameHeaders } from "../views/Game.js";
+import { Finish, FinishHeaders } from "../views/FinishTrivia.js";
 
 const d = document;
 const w = window;
@@ -38,6 +39,7 @@ export async function Router() {
       await LoginHeaders();
       $root.innerHTML = await Login();
    } else if (hash === "#/main") {
+      d.querySelector(".pos__btnBack").style = "display: none"
       await MainHeaders();
       await $root.appendChild(Main());
    } else if (hash === "#/choose-game") {
@@ -51,7 +53,12 @@ export async function Router() {
    } else if (hash === "#/game") {
       await GameHeaders();
       await $root.appendChild(Game());
-   } else if(hash === "#/profile"){
+   } else if (hash === "#/finish") {
+      d.querySelector(".pos__btnBack").style = "display: none"
+      await FinishHeaders();
+      await $root.appendChild(Finish());
+   }
+   else if(hash === "#/profile"){
       await ProfileHeaders();
       const obj = await fillData();
       await $root.appendChild(Profile(obj));

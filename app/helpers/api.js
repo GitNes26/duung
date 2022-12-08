@@ -1,7 +1,7 @@
 const 
 GET = "GET",
 POST = "POST",
-UPDATE = "UPDATE",
+PUT = "PUT",
 DELETE = "DELETE",
 PATCH = "PATCH",
 // PROTOCOL = "https://",
@@ -27,7 +27,7 @@ TIPS = `${API_URL}/tips`
 export default {
    GET,
    POST,
-   UPDATE,
+   PUT,
    DELETE,
    PATCH,
    PROTOCOL,

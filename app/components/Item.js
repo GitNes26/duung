@@ -1,8 +1,6 @@
 export const Item = (props={}) => {
-   // let answers, id, question
-   // if (props) {answers, id, question} = props;
-   let {answers, id, question} = props;
-   return`
+   let {answers, item_id, item_question} = props;
+   let item =`
       <div
          class="card__BlocGame position-absolute start-50 translate-middle-x"
       >
@@ -16,13 +14,18 @@ export const Item = (props={}) => {
                   padding: 100px;
                "
             >
-               <h1 class="fw-light text1__game">¿La pregunta es?</h1>
+               <h1 class="fw-light text1__game">${item_question}</h1>
             </center>
          </div>
          <br />
          <div class="row">
+   `;
+         
+   if (answers.length > 0) {
+      item += `
             <center
-               class="col-md-12 push"
+               class="col-md-12 push btn_answer"
+               data-c="${answers[0].answer_correct}"
                type="button"
                style="
                   background-color: #ffffff;
@@ -48,13 +51,16 @@ export const Item = (props={}) => {
                      a)
                   </div>
                   <h4 class="fw-light col-md-10 col-10 text2__game">
-                     Respuesta a
+                     ${answers[0].answer_text}
                   </h4>
                </div>
             </center>
-
+      `;
+      if (answers.length > 1) {
+         item += `
             <center
-               class="col-md-12 push"
+               class="col-md-12 push btn_answer"
+               data-c="${answers[1].answer_correct}"
                type="button"
                style="
                   background-color: #ffffff;
@@ -80,13 +86,16 @@ export const Item = (props={}) => {
                      b)
                   </div>
                   <h4 class="fw-light col-md-10 col-10 text2__game">
-                  Respuesta b
+                     ${answers[1].answer_text}
                   </h4>
                </div>
             </center>
-
+         `;
+         if (answers.length > 2) {
+            item += `
             <center
-               class="col-md-12 push"
+               class="col-md-12 push btn_answer"
+               data-c="${answers[2].answer_correct}"
                type="button"
                style="
                   background-color: #ffffff;
@@ -112,12 +121,16 @@ export const Item = (props={}) => {
                      c)
                   </div>
                   <h4 class="fw-light col-md-10 col-10 text2__game">
-                  Respuesta c
+                     ${answers[2].answer_text}
                   </h4>
                </div>
             </center>
+            `;
+            if (answers.length == 4) {
+               item += `
             <center
-               class="col-md-12 push"
+               class="col-md-12 push btn_answer"
+               data-c="${answers[3].answer_correct}"
                type="button"
                style="
                   background-color: #ffffff;
@@ -143,11 +156,22 @@ export const Item = (props={}) => {
                      d)
                   </div>
                   <h4 class="fw-light col-md-10 col-10 text2__game">
-                  Respuesta d
+                     ${answers[3].answer_text}
                   </h4>
                </div>
             </center>
-         </div>
+               `;
+            }
+         }
+      }
+   }
+   item += `
       </div>
+   </div>
    `
+   return item;
+}
+
+export const Items = () => {
+
 }

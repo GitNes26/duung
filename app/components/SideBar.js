@@ -29,9 +29,9 @@ export function SideBar() {
                         <img src="/app/assets/images/2.png"   class="ico__principal">
                      </a>
       
-                     <a class="e__sidebar1 d-inline-block text-truncate purpleScroll" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-home icon"></i>Home</a>
+                     <a class="e__sidebar1 d-inline-block text-truncate" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-home icon"></i>Home</a>
 
-                     <a class="e__sidebar1 d-inline-block text-truncate purpleScroll" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-gamepad icon"></i></i>Area de juego</a>
+                     <a class="e__sidebar1 d-inline-block text-truncate purpleScroll" data-bs-parent="#sidebar" href="#/choose-game"> <i class="fas fa-solid fa-gamepad icon"></i></i>Area de juego</a>
 
                      <a class="e__sidebar1 d-inline-block text-truncate greenScroll" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-coins icon"></i>Score</a>
                      <a class="e__sidebar1 d-inline-block text-truncate yellowScroll" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-brain icon"></i>Cultiva tu mente</a>
