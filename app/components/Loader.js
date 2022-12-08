@@ -2,10 +2,11 @@ const d = document;
 
 export function Loader() {
    const dialogoBlockUI = `
-      <div class="card text-center" style="opacity:1 !important; width:40vw !important;">
+      <div class="text-center text-light" style="opacity:1 !important; width:40vw !important;">
          <div class="card-body">
+            <img src="/app/assets/images/11.png" class="img__loading"/>
             <div class="fw-bold h6">CARGANDO...</div><br>
-            <div class='spinner-border text-dark' role='status'> <span class='sr-only'></span></div>
+            <div class='spinner-border text-light' role='status'> <span class='sr-only'></span></div>
          </div>
       </div>
    `;

@@ -150,7 +150,7 @@ export function ChooseGame() {
 //#region FUNCIONES LOGICAS
 d.addEventListener("click", function(e) {
    if (e.target.matches("#view-choose_game #btn_start") || e.target.matches("#view-choose_game #btn_start *")) {
-      route("game");
+      beginGame();
    }
 })
 
@@ -179,5 +179,14 @@ export const fillData_chooseGame = async () => {
    d.querySelector("#difficults").innerHTML = chk_difficults
 
    
+}
+
+const beginGame = () => {
+   console.log("cooomencemos");
+   const subjet = d.querySelector("#select_subjets");
+   console.log("🚀 ~ file: ChooseGame.js:187 ~ beginGame ~ subjet", subjet.value)
+   const difficult = d.querySelector("input[name='option_difficult']");
+   console.log("🚀 ~ file: ChooseGame.js:189 ~ beginGame ~ difficult", difficult.value)
+   // if ()
 }
 //#endregion FUNCIONES LOGICAS

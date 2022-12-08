@@ -57,7 +57,7 @@ function mostrarAlertaConOpciones(
 				 timer: 1500,
 			  }).then(() => {
 				 if (refresh) {
-					console.log("refresh3"); /*window.location.reload();*/
+					// console.log("refresh3"); /*window.location.reload();*/
 				 }
 				 switch (funcion_then) {
 					case "nada":
@@ -112,7 +112,6 @@ const inputValidate = (input) => {
 }
 
 export const validateSession = () => {
-   console.log("validateSession()");
 	if (!getSession()) return false;
 	if(!getToken()) return false;
 	return true;
