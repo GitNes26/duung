@@ -3,7 +3,6 @@ const filesToCache = [
 	"./",
 	"./index.html",
 	"./favicon.ico",
-	"./OneSignalSDKWorker.js",
 
 	"./app/assets/css/loginStyle.css",
 	"./app/assets/css/fondo.css",

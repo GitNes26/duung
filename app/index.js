@@ -3,7 +3,7 @@ import { App } from "./App.js";
 const audio_theme = document.querySelector("#audio_theme")
 audio_theme.volume = 0.01;
 const bubblesArea = document.querySelector("#bubblesArea")
-
+let ObjRound = [];
 
 document.querySelector("#root").addEventListener("mouseover", () => {
    audio_theme.muted=false;

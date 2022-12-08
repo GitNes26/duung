@@ -1,5 +1,6 @@
 import { CloseLoader, Loader } from "../components/Loader.js";
-import { getToken } from "./helpers.js";
+import { showAlert } from "./Alerts.js";
+import { CleanCookies, getToken } from "./helpers.js";
 
 export async function fetchRequestAsync(url, method, data={}, token=null, modal_close=null) {
    // let {url, cbSuccess} = props;
@@ -136,10 +137,16 @@ export async function GET_fetchRequest(props) {
 
 function errorHandler(response) {
    if (!response.ok) {
-      console.error(response);
+      console.trace(response);
       if (response.status === 401) {
          if (response.statusText === "Unauthorized"){
+            CleanCookies();
             location.hash = '/';
+         }
+      }
+      if (response.status === 422) {
+         if (response.statusText === "Unprocessable Content"){
+            showAlert(null,'error','Usuario y/o contraseña invalidas!','',true);
          }
       }
    }

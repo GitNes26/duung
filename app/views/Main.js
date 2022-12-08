@@ -28,30 +28,6 @@ export function MainHeaders() {
 
    $head.querySelector("title").textContent = "DUUNG | Menú";
    addStyles();
-   // <script src="/OneSignalSDKWorker.js" async=""></script>
-	// 	<script>
-		// window.OneSignal = window.OneSignal || [];
-		// OneSignal.push(function() {
-		// 	OneSignal.init({
-		// 		appId: "a3a9830b-ea35-44ff-bc2c-4a0d6f7355c6",
-		// 	});
-		//   });
-	// 	</script>
-   // let $scriptOneSignal = d.createElement("script");
-   // $scriptOneSignal.src = "/OneSignalSDKWorker.js";
-   // $scriptOneSignal.async = ""
-   // $fragment.appendChild($scriptOneSignal);
-   // $scriptOneSignal = d.createElement("script");
-   // $scriptOneSignal.textContent = `
-   //    window.OneSignal = window.OneSignal || [];
-	// 	OneSignal.push(function() {
-	// 		OneSignal.init({
-	// 			appId: "a3a9830b-ea35-44ff-bc2c-4a0d6f7355c6",
-	// 		});
-   //    });
-   // `;
-   // $fragment.appendChild($scriptOneSignal);
-   // $head.appendChild($fragment);
 }
 
 export function Main() {
@@ -186,10 +162,10 @@ function blueScroll() {
 }
 
 const logOut = async () => {
+   console.log("LogOut()");
    console.log(Cookies.get());
    await GET_fetchRequestAsync(`${api.LOGOUT}/${getId()}`, api.DELETE, getToken())
    CleanCookies();
    route('')
-   console.log(Cookies.get());
 }
 //#endregion FUNCIONES LOGICAS

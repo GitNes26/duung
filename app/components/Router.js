@@ -4,7 +4,7 @@ import { CloseLoader, Loader } from "./Loader.js";
 import { LoginHeaders, Login } from "../views/Login.js";
 import { SplashHeaders, Splash } from "../views/Splash.js";
 import { MainHeaders, Main } from "../views/Main.js";
-import { Start, StartHeaders } from "../views/StartTrivia.js";
+import { getRound, Start, StartHeaders } from "../views/StartTrivia.js";
 import { ChooseGame, ChooseGameHeaders, fillData_chooseGame } from "../views/ChooseGame.js";
 import { fillData, Profile, ProfileHeaders } from "../views/Profile.js";
 import { getScore, Score, ScoreHeaders } from "../views/Score.js";
@@ -40,13 +40,14 @@ export async function Router() {
    } else if (hash === "#/main") {
       await MainHeaders();
       await $root.appendChild(Main());
-   } else if (hash === "#/start") {
-      await StartHeaders();
-      await $root.appendChild(Start());
    } else if (hash === "#/choose-game") {
       await ChooseGameHeaders();
       await $root.appendChild(ChooseGame());
       await fillData_chooseGame();
+   } else if (hash === "#/start") {
+      await StartHeaders();
+      await $root.appendChild(Start());
+      await getRound();
    } else if (hash === "#/game") {
       await GameHeaders();
       await $root.appendChild(Game());
@@ -57,8 +58,8 @@ export async function Router() {
       // $root.innerHTML="<h1>perfil</h1>"
    }else if(hash === "#/score"){
       const obj = await getScore();
-      // await ScoreHeaders();
-      // await $root.appendChild(Score(obj));
+      await ScoreHeaders();
+      await $root.appendChild(Score(obj));
    }else if(hash === "#/cultiva"){
       await CultivaHeaders();
       await $root.appendChild(Cultiva());

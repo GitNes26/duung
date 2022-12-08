@@ -21,7 +21,7 @@ export const getId = () => Cookies.get('active_id');
 export const getUsername = () => Cookies.get('active_username');
 export const getRole = () => Cookies.get('active_role');
 export const getEmail = () => Cookies.get('active_email');
-
+export const getCookie = (name) => Cookies.get(name);
 
 const expires = 10; //dias
 export const setCookies = (objResponse) => {
@@ -32,6 +32,7 @@ export const setCookies = (objResponse) => {
    Cookies.set('active_role', objResponse.data.role_id, {expires});
    Cookies.set('active_email', objResponse.data.email, {expires});
 }
+export const setCookie = (name,value) => Cookies.set(name, value, {expires})
 
 export const CleanCookies = () => {
    Cookies.remove('active_session', {expires});
@@ -41,6 +42,7 @@ export const CleanCookies = () => {
    Cookies.remove('active_role', {expires});
    Cookies.remove('active_email', {expires});
 }
+export const removeCookie = (name) => Cookies.remove(name, {expires})
 
 export const playAudio = (audio) => {
    console.log("audio");

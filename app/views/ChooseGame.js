@@ -1,7 +1,8 @@
 import { SideBar } from "../components/SideBar.js";
 import api from "../helpers/api.js";
-import { GET_fetchRequestAsync } from "../helpers/fetchRequest.js";
-import { getToken, route } from "../helpers/helpers.js";
+import { fetchRequestAsync, GET_fetchRequestAsync } from "../helpers/fetchRequest.js";
+import { getId, getToken, route, setCookie } from "../helpers/helpers.js";
+import { inputValidate, showToast } from "../helpers/validates.js";
 
 const d = document;
 
@@ -64,6 +65,7 @@ export function ChooseGame() {
                            <div></div>
                            <select
                               id="select_subjets"
+                              data-input-name="MATERIA"
                               class="form-select form-select-lg mb-3 fw-light"
                               style="
                                  font-size: 15px;
@@ -148,9 +150,18 @@ export function ChooseGame() {
 
 
 //#region FUNCIONES LOGICAS
+let option_difficult = -1;
+
+
+
 d.addEventListener("click", function(e) {
    if (e.target.matches("#view-choose_game #btn_start") || e.target.matches("#view-choose_game #btn_start *")) {
       beginGame();
+   }
+
+   if (e.target.matches("#view-choose_game [name='option_difficult']")) {
+      option_difficult = e.target.value
+
    }
 })
 
@@ -170,23 +181,36 @@ export const fillData_chooseGame = async () => {
    difficults.map(d => {
       chk_difficults += `
          <div class="col-md-4">
-            <input type="radio" class="btn-check" name="option_difficult" id="d_${d.difficult_id}" autocomplete="off">
+            <input type="radio" class="btn-check" name="option_difficult" id="d_${d.difficult_id}" value="${d.difficult_id}" data-name="${d.difficult_name}" autocomplete="off">
             <label class="btn btn-outline-dark space__section" for="d_${d.difficult_id}">${d.difficult_name}</label>
          </div>
       `;
    });
    d.querySelector("#difficults").innerHTML = null;
-   d.querySelector("#difficults").innerHTML = chk_difficults
-
-   
+   d.querySelector("#difficults").innerHTML = chk_difficults;   
 }
 
-const beginGame = () => {
-   console.log("cooomencemos");
-   const subjet = d.querySelector("#select_subjets");
-   console.log("🚀 ~ file: ChooseGame.js:187 ~ beginGame ~ subjet", subjet.value)
-   const difficult = d.querySelector("input[name='option_difficult']");
-   console.log("🚀 ~ file: ChooseGame.js:189 ~ beginGame ~ difficult", difficult.value)
-   // if ()
+const beginGame = async () => {
+   let subjet = d.querySelector("#select_subjets");
+   let difficult = d.querySelector("input[name='option_difficult']");
+
+   if (!inputValidate(subjet)) return;
+   if (option_difficult < 0) showToast('error',"campo INTENISDAD vacio.");
+
+   // const difficult_name = d.querySelector(`#d_${option_difficult}`).dataset.name
+   // const game_title = `${subjet.textContent.toUpperCase()} - ${difficult_name}`;
+   
+   const data = {
+      game_user_id: getId(),
+      subjet_id: subjet.value, 
+      difficult_id: option_difficult,
+      game_description: '',
+   }
+   // return console.log(data);
+   const fetchResponse = await fetchRequestAsync(api.GAMES,api.POST,data,getToken())
+   const objResponse = fetchResponse.data;
+   setCookie("active_game",objResponse.game_id);
+   setCookie("active_round",objResponse.round_id);
+   route("start")
 }
 //#endregion FUNCIONES LOGICAS
