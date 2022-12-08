@@ -24,11 +24,34 @@ export function CultivaHeaders() {
    addStyles();
 }
 
-export  function Cultiva() {
+export  function Cultiva(tips) {
    // console.log(props);
    // const data = await fillData();
 	const $content = d.createElement("div");
-   $content.id = "view-score";
+   $content.id = "view-tips";
+   let $datos_curiosos =``;
+
+   tips.length >0
+   ?tips.map(tip=>{
+      $datos_curiosos  +=`
+      <div class="col-md-12"  >
+                     <hr />
+                     <div class="row " style="cursor:pointer;" onclick="window.open('${tip.enlace}');">
+                        <img class="col-md-4 img__card" src=" ${tip.imagen}" />
+                        <div class="col-md-8">
+                           <h4 class="fw-light">${tip.titulo}</h4>
+                           <p class="fw-light">
+                           ${tip.contenido}
+                           </p>
+                        </div>
+                        <hr />
+                     </div>
+                  </div>
+      `
+   })
+   :$datos_curiosos  +=`<p>Lo sentimos no hay noticias para mostrar</p>`
+
+
 	$content.innerHTML = `
    <div class="context">
    <div class="position-relative">
@@ -42,20 +65,7 @@ export  function Cultiva() {
                <h1 class="text-center title__Cu">Cultiva tu mente</h1>
                <p class="fw-light">Aprende más leyento e informandote de lo que pasa en el mundo. Lee estas noticias
                   mundiales.</p>
-               <div class="col-md-12">
-                  <hr />
-                  <div class="row">
-                     <img class="col-md-4 img__card" src="/app/assets/images/news.jpg" />
-                     <div class="col-md-8">
-                        <h4 class="fw-light">Dato Interesante</h4>
-                        <p class="fw-light">
-                           Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                           nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                     </div>
-                     <hr />
-                  </div>
-               </div>
+                  ${$datos_curiosos}  
             </div>
          </div>
       </div>
@@ -67,11 +77,11 @@ export  function Cultiva() {
 }
 //#endregion FUNCIONES DE RENDERIZADO
 //#region FUNCIONES LOGICAS
-d.addEventListener("click", function(e) {
-   // if (e.target.matches("#view-score #btn_aceptar_profile") || e.target.matches("#view-score #btn_aceptar_profile *")) {
-   //    fillData();
-   // }
-})
+// d.addEventListener("click", function(e) {
+//    if (e.target.matches("#view-tips #btn_aceptar_profile") || e.target.matches("#view-tips #btn_aceptar_profile *")) {
+//       fillData();
+//    }
+// })
 // export const fillData = async () =>{
 //    const res= await GET_fetchRequestAsync(`${api.USERS}/${getId()}`,api.GET,getToken());
 //    let obj_res = res.data[0];
@@ -81,6 +91,11 @@ d.addEventListener("click", function(e) {
 // }
 //#endregion FUNCIONES LOGICAS
 
-export const getTips =async () =>{
-   
+export const getTips = async () => {
+   const res = await GET_fetchRequestAsync(`${api.TIPS}list`, api.GET, getToken());
+   let obj_res = res.data;
+   // console.log(obj_res);
+   // const output_nom_us = d.querySelector("#view-profile #output_nom_us")
+   // output_nom_us.textContent =obj_res.username;
+   return obj_res;
 }
