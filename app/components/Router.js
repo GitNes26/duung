@@ -9,7 +9,7 @@ import { ChooseGame, ChooseGameHeaders, fillData_chooseGame } from "../views/Cho
 import { fillData, Profile, ProfileHeaders } from "../views/Profile.js";
 import { getScore, Score, ScoreHeaders } from "../views/Score.js";
 import { Cultiva, CultivaHeaders, getTips } from "../views/Cultiva.js";
-import { Configuracion, ConfiguracionHeaders } from "../views/Configuracion.js";
+import { checkSounds, Configuracion, ConfiguracionHeaders } from "../views/Configuracion.js";
 import { Game, GameHeaders } from "../views/Game.js";
 import { Finish, FinishHeaders } from "../views/FinishTrivia.js";
 
@@ -74,6 +74,7 @@ export async function Router() {
    }else if(hash === "#/configuracion"){
       await ConfiguracionHeaders();
       await $root.appendChild(Configuracion());
+      await checkSounds();
    }
    
    else {

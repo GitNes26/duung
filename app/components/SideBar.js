@@ -33,10 +33,10 @@ export function SideBar() {
 
                      <a class="e__sidebar1 d-inline-block text-truncate purpleScroll" data-bs-parent="#sidebar" href="#/choose-game"> <i class="fas fa-solid fa-gamepad icon"></i></i>Area de juego</a>
 
-                     <a class="e__sidebar1 d-inline-block text-truncate greenScroll" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-coins icon"></i>Score</a>
-                     <a class="e__sidebar1 d-inline-block text-truncate yellowScroll" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-brain icon"></i>Cultiva tu mente</a>
-                     <a class="e__sidebar1 d-inline-block text-truncate pinkScroll" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-user icon"></i>Perfil</a>
-                     <a class="e__sidebar1 d-inline-block text-truncate blueScroll" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-wrench icon"></i>Configuraciones</a>
+                     <a class="e__sidebar1 d-inline-block text-truncate greenScroll btn_score" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-coins icon"></i>Score</a>
+                     <a class="e__sidebar1 d-inline-block text-truncate yellowScroll btn_cultiva" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-brain icon"></i>Cultiva tu mente</a>
+                     <a class="e__sidebar1 d-inline-block text-truncate pinkScroll btn_profile" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-user icon"></i>Perfil</a>
+                     <a class="e__sidebar1 d-inline-block text-truncate blueScroll btn_configuracion" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-solid fa-wrench icon"></i>Configuraciones</a>
 
                      <a id="btn_logout" class="e__sidebar1 d-inline-block text-truncate logout" data-bs-parent="#sidebar"> <i class="fas fa-sign-out-alt icon"></i>Cerrar Sesión</a>
                      

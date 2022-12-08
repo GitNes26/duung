@@ -1,6 +1,6 @@
 import api from "../helpers/api.js";
 import { GET_fetchRequestAsync } from "../helpers/fetchRequest.js";
-import { getId, getToken, route } from "../helpers/helpers.js";
+import { getCookie, getId, getToken, route, setCookie } from "../helpers/helpers.js";
 
 const d = document;
 
@@ -27,8 +27,10 @@ export function ConfiguracionHeaders() {
 export  function Configuracion() {
    // console.log(props);
    // const data = await fillData();
+  
+
 	const $content = d.createElement("div");
-   $content.id = "view-score";
+   $content.id = "view-conf";
 	$content.innerHTML = `
    <div class="context">
    <div class="position-relative">
@@ -41,13 +43,22 @@ export  function Configuracion() {
             <div class="text-center scroll__cardP">
                <h1 class="title__p">Ajustes</h1>
 
-               <div>
+               <div class="col-md-12 ">
                   <label class="label__c fw-light">Volumen</label>
                </div>
-               <div>
-                  <label class="label__c fw-light">Idioma</label>
-               </div>
+               <div class="form-check">
+  <input class="form-check-input" type="checkbox" id="ch_musica">
+  <label class="form-check-label" for="ch_musica">
+    Música
+  </label>
+</div>
 
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" id="ch_efectos" >
+  <label class="form-check-label" for="ch_efectos">
+    Efectos
+  </label>
+</div>
             </div>
 
          </div>
@@ -61,9 +72,16 @@ export  function Configuracion() {
 //#endregion FUNCIONES DE RENDERIZADO
 //#region FUNCIONES LOGICAS
 d.addEventListener("click", function(e) {
-   // if (e.target.matches("#view-score #btn_aceptar_profile") || e.target.matches("#view-score #btn_aceptar_profile *")) {
-   //    fillData();
-   // }
+   if (e.target.matches("#view-conf #ch_musica") || e.target.matches("#view-conf #ch_musica *")) {
+      console.log(e.target.checked);
+      setCookie("musicSound",e.target.checked)
+      // fillData();
+   }
+   if (e.target.matches("#view-conf #ch_efectos") || e.target.matches("#view-conf #ch_efectos *")) {
+      console.log(e.target);
+      setCookie("efectsSound",e.target.checked)
+      // fillData();
+   }
 })
 // export const fillData = async () =>{
 //    const res= await GET_fetchRequestAsync(`${api.USERS}/${getId()}`,api.GET,getToken());
@@ -73,3 +91,14 @@ d.addEventListener("click", function(e) {
 //    return obj_res;
 // }
 //#endregion FUNCIONES LOGICAS
+
+export const checkSounds = async()=>{
+
+   const efectsSound = getCookie("efectsSound")
+   const musicSound = getCookie("musicSound")
+
+   const ch_m = d.getElementById("ch_musica")
+   const ch_e = d.getElementById("ch_efectos")
+   ch_m.checked=musicSound==="true"?true:false;
+   ch_e.checked=efectsSound==="true"?true:false;
+}

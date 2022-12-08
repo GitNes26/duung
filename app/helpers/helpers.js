@@ -31,6 +31,8 @@ export const setCookies = (objResponse) => {
    Cookies.set('active_username', objResponse.data.username, {expires});
    Cookies.set('active_role', objResponse.data.role_id, {expires});
    Cookies.set('active_email', objResponse.data.email, {expires});
+   Cookies.set('musicSound', true, {expires});
+   Cookies.set('efectsSound', true, {expires});
 }
 export const setCookie = (name,value) => Cookies.set(name, value, {expires})
 
