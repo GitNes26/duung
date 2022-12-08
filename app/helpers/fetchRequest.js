@@ -5,7 +5,6 @@ export async function fetchRequestAsync(url, method, data={}, token=null, modal_
    // let {url, cbSuccess} = props;
    // let {api_path, method, data={}, token=false, modal_close=null} = props;
 
-   console.log("FetchRequest()");
 	let response;
 	await Loader();
 	try {
@@ -40,7 +39,6 @@ export async function GET_fetchRequestAsync(url, method, token=null, modal_close
    // let {url, cbSuccess} = props;
    // let {api_path, method, token=false, modal_close=null} = props;
 
-   console.log("FetchRequest()");
 	let response;
 	await Loader();
 	try {
@@ -73,7 +71,6 @@ export async function fetchRequest(props) {
    // let {url, cbSuccess} = props;
    let {api_path, method, data={}, token=false, modal_close=null} = props;
 
-   console.log("FetchRequest()");
 	let response;
 	// await Loader();
 	try {
@@ -108,7 +105,6 @@ export async function GET_fetchRequest(props) {
    // let {url, cbSuccess} = props;
    let {api_path, method, token=false, modal_close=null} = props;
 
-   console.log("FetchRequest()");
 	let response;
 	// await Loader();
 	try {
@@ -140,6 +136,7 @@ export async function GET_fetchRequest(props) {
 
 function errorHandler(response) {
    if (!response.ok) {
+      console.error(response);
       if (response.status === 401) {
          if (response.statusText === "Unauthorized"){
             location.hash = '/';

@@ -74,8 +74,6 @@ export async function Router() {
       <a class="btn btn-primary" href="/">Regresar al inicio</a>`;
    }
 
-   // if (!hash || hash !== "/" || hash !== "#/") {
-   //    d.querySelector(".pos__btnBack").style = "display: block"
-   // }
+   
    CloseLoader();
 }

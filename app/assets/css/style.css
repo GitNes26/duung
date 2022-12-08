@@ -1353,3 +1353,15 @@ body {
 .btnBack:hover:after {
 	transform: none;
 }
+
+
+:root {--img--loading--height:20vw}
+.img__loading {
+	height:var(--img--loading--height);
+}
+@media screen and (max-width:768px) {
+	:root {--img--loading--height:25vw}
+}
+@media screen and (max-width:480px) {
+	:root {--img--loading--height:40vw}
+}
