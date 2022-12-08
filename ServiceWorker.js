@@ -28,6 +28,29 @@ const filesToCache = [
     "./favicon.ico"
 ];
 
+self.addEventListener('install', function(event) {
+
+    event.waitUntil(
+        caches.open(cacheName)
+        .then(function(cache) {
+            console.log('Cache open!');
+            return cache.addAll(filesToCache);
+        })
+    );
+});
+
+self.addEventListener('fetch', function(event) {
+    event.respondWith(
+        caches.match(event.request)
+        .then(function(response) {
+            if (response) {
+                return response;
+            }
+            return fetch(event.request);
+        })
+    );
+});
+
 // "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback",
 // "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css",
 // "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js",
@@ -37,79 +60,79 @@ const filesToCache = [
 
 
 
-// Cache on install
-self.addEventListener("install", e => {
-    console.log("[ServiceWorker**] - Install");
-    e.waitUntil(
-        caches.open(cacheName).then(cache => {
-            console.log("[ServiceWorker**] - Caching app shell");
-            return cache.addAll(filesToCache);
-        })
-    );
-});
+// // Cache on install
+// self.addEventListener("install", e => {
+//     console.log("[ServiceWorker**] - Install");
+//     e.waitUntil(
+//         caches.open(cacheName).then(cache => {
+//             console.log("[ServiceWorker**] - Caching app shell");
+//             return cache.addAll(filesToCache);
+//         })
+//     );
+// });
 
-self.addEventListener("activate", event => {
-    caches.keys().then(keyList => {
-        return Promise.all(
-            keyList.map(key => {
-                if (key !== cacheName) {
-                    console.log("[ServiceWorker] - Removing old cache", key);
-                    return caches.delete(key);
-                }
-            })
-        );
-    });
-    event.waitUntil(self.clients.claim());
-});
+// self.addEventListener("activate", event => {
+//     caches.keys().then(keyList => {
+//         return Promise.all(
+//             keyList.map(key => {
+//                 if (key !== cacheName) {
+//                     console.log("[ServiceWorker] - Removing old cache", key);
+//                     return caches.delete(key);
+//                 }
+//             })
+//         );
+//     });
+//     event.waitUntil(self.clients.claim());
+// });
 
-self.addEventListener("fetch", event => {
-    event.respondWith(
-        caches.match(event.request, { ignoreSearch: true }).then(response => {
-            return response || fetch(event.request);
-        })
-    );
-});
+// self.addEventListener("fetch", event => {
+//     event.respondWith(
+//         caches.match(event.request, { ignoreSearch: true }).then(response => {
+//             return response || fetch(event.request);
+//         })
+//     );
+// });
 
 
 
-// Serve from Cache
-self.addEventListener("fetch", event => {
-    event.respondWith(
-        caches.match(event.request)
-        .then(response => {
-            return response || fetch(event.request);
-        })
-        .catch(() => {
-            return caches.match('/offline.html');   
-        })   )
-});
+// // Serve from Cache
+// self.addEventListener("fetch", event => {
+//     event.respondWith(
+//         caches.match(event.request)
+//         .then(response => {
+//             return response || fetch(event.request);
+//         })
+//         .catch(() => {
+//             return caches.match('/offline.html');   
+//         })   )
+// });
 
-self.addEventListener("install", installEvent => {
-    installEvent.waitUntil(
-        caches.open(cacheName).then(function(cache) {
-            return cache.addAll(filesToCache);
-        })
-    )
-})
+// self.addEventListener("install", installEvent => {
+//     installEvent.waitUntil(
+//         caches.open(cacheName).then(function(cache) {
+//             return cache.addAll(filesToCache);
+//         })
+//     )
+// })
 
-self.addEventListener("fetch", fetchEvent => {
-    fetchEvent.respondWith(
-        caches.match(fetchEvent.request).then(res => {
-            return res || fetch(fetchEvent.request)
-        })
-    )
-})
+// self.addEventListener("fetch", fetchEvent => {
+//     fetchEvent.respondWith(
+//         caches.match(fetchEvent.request).then(res => {
+//             return res || fetch(fetchEvent.request)
+//         })
+//     )
+// })
 
-self.addEventListener("activate", event => {
-    caches.keys().then(keyList => {
-        return Promise.all(
-            keyList.map(key => {
-                if (key !== cacheName) {
-                    console.log("[ServiceWorker] - Removing old cache", key);
-                    return caches.delete(key);
-                }
-            })
-        );
-    });
-    event.waitUntil(self.clients.claim());
-});
+// self.addEventListener("activate", event => {
+//     caches.keys().then(keyList => {
+//         return Promise.all(
+//             keyList.map(key => {
+//                 if (key !== cacheName) {
+//                     console.log("[ServiceWorker] - Removing old cache", key);
+//                     return caches.delete(key);
+//                 }
+//             })
+//         );
+//     });
+//     event.waitUntil(self.clients.claim());
+// });
