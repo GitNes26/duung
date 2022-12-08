@@ -8,10 +8,6 @@ PATCH = "PATCH",
 // HOST = "persidpanute.maemm.xyz",
 PROTOCOL = "http://",
 HOST = "127.0.0.1:8000",
-<<<<<<< HEAD
-// HOST = "persidpanute.maemm.xyz",
-=======
->>>>>>> 67ada2a9661d4e7b12683b4cafcff13509e6f2f9
 DOMAIN = `${PROTOCOL}${HOST}`,
 API_URL = `${DOMAIN}/api`,
 SIGNUP = `${API_URL}/signup`,
