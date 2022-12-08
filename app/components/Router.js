@@ -23,8 +23,11 @@ export async function Router() {
    console.log(hash);
    await Loader();
 
+   d.querySelector(".pos__btnBack").style = "display: block"
    $root.innerHTML = null;
    if (!hash || hash === "#/") {
+      d.querySelector(".pos__btnBack").style = "display: none"
+
       await SplashHeaders();
       await $root.appendChild(Splash());
    } else if (hash === "#/login") {
@@ -70,5 +73,9 @@ export async function Router() {
       <a class="btn btn-primary" href="/">Regresar a la pagina anterior</a>
       <a class="btn btn-primary" href="/">Regresar al inicio</a>`;
    }
+
+   // if (!hash || hash !== "/" || hash !== "#/") {
+   //    d.querySelector(".pos__btnBack").style = "display: block"
+   // }
    CloseLoader();
 }

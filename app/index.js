@@ -22,6 +22,8 @@ window.addEventListener("mouseover", () => {
 })
 // audio_theme.play();
 
+// navigator.addEventListener("online",() => console.log("la app esta en linea"));
+// navigator.addEventListener("offline",() => console.log("la app NO esta en linea"));
 
 document.addEventListener("DOMContentLoaded",App);
 window.addEventListener("hashchange",App);
