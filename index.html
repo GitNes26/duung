@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<head>
-		<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"  async=""></script>
+		<script
+			src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
+			async=""
+		></script>
 		<script>
-		  window.OneSignal = window.OneSignal || [];
-		  OneSignal.push(function() {
-			OneSignal.init({
-			  appId: "a3a9830b-ea35-44ff-bc2c-4a0d6f7355c6",
+			window.OneSignal = window.OneSignal || [];
+			OneSignal.push(function () {
+				OneSignal.init({
+					appId: "a3a9830b-ea35-44ff-bc2c-4a0d6f7355c6",
+				});
 			});
-		  });
 		</script>
 
 		<meta charset="UTF-8" />
@@ -131,11 +134,45 @@
 		<style></style>
 	</head>
 	<body class="contenedor">
+		<!--INICIO BUTON AREA-->
+
+		<div class="pos__btnBack">
+			<div class="wrapper">
+				<p class="btnBack" onClick="history.go(-1);">
+					<i class="fas fa-solid fa-arrow-left"></i>
+				</p>
+			</div>
+
+			<svg
+				style="visibility: hidden; position: absolute"
+				width="0"
+				height="0"
+				xmlns="http://www.w3.org/2000/svg"
+				version="1.1"
+			>
+				<defs>
+					<filter id="goo">
+						<feGaussianBlur
+							in="SourceGraphic"
+							stdDeviation="10"
+							result="blur"
+						/>
+						<feColorMatrix
+							in="blur"
+							mode="matrix"
+							values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+							result="goo"
+						/>
+						<feComposite in="SourceGraphic" in2="goo" operator="atop" />
+					</filter>
+				</defs>
+			</svg>
+		</div>
+
+		<!--FIN BUTON AREA-->
 		<div id="root"></div>
 
-
-
-		<div class="areaPurple1">
+		<div id="bubblesArea" class="areaPurple1">
 			<ul class="circles">
 				<li></li>
 				<li></li>
@@ -150,15 +187,19 @@
 			</ul>
 		</div>
 
-		<audio id="audio_theme" preload="auto" loop autoplay="true" muted="true">
+		<audio id="audio_theme" loop autoplay="true">
 			<source
 				src="/app/assets/audios/musica-espera-separador-musical-.mp3"
 				type=""
 			/>
 			<source src="/app/assets/audios/thme-musical.mp3" type="" />
 		</audio>
-		<audio id="audio_events" preload="auto" src="/app/assets/audios/correct_answer2.mp3">
-		</audio>
+		<audio
+			id="audio_events"
+			preload="auto"
+			src="/app/assets/audios/correct_answer2.mp3"
+		></audio>
+
 		<!-- SCRIPTS PLUGINS -->
 		<div id="plugins_scripts">
 			<!-- JQuery 6 -->

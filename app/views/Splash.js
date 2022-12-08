@@ -75,6 +75,10 @@ export function Splash() {
 //#region FUNCIONES LOGICAS
 d.addEventListener("click", function(e) {
    if (e.target.matches("#view-splash #btn_begin") || e.target.matches("#view-splash #btn_begin *")) {
+      const audio_theme = document.querySelector("#audio_theme")
+      audio_theme.muted=false;
+      audio_theme.volume = 0.01;
+      audio_theme.play();
       playAudio(`correct_answer2.mp3`);
       route("login");
    }

@@ -42,7 +42,7 @@ export function ChooseGame() {
             <h1
                class="position-absolute title__cardConfigurate start-50 translate-middle-x"
             >
-               Elije tu partida
+               Crea una partida
             </h1>
             <img
                class="d-md-block d-none position-absolute start-50 translate-middle-x img__central"
@@ -72,14 +72,6 @@ export function ChooseGame() {
                               "
                               aria-label="form-select-lg"
                            >
-                              <option class="fw-light" selected>
-                                 Abre este menú select
-                              </option>
-                              <option class="fw-light" value="1">Uno</option>
-                              <option class="fw-light" value="2">Dos</option>
-                              <option class="fw-light" value="3">
-                                 Tres
-                              </option>
                            </select>
                         </div>
                         <div>
