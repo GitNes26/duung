@@ -39,7 +39,7 @@ const filesToCache = [
 
 
 
-// Cache on install
+// // Cache on install
 // self.addEventListener("install", e => {
 //    console.log("[ServiceWorker**] - Install");
 //    e.waitUntil(
@@ -71,10 +71,7 @@ const filesToCache = [
 //        })
 //    );
 // });
-
-
-
-// Serve from Cache
+// // Serve from Cache
 // self.addEventListener("fetch", event => {
 //    event.respondWith(
 //       caches.match(event.request)
@@ -87,6 +84,10 @@ const filesToCache = [
 //       )
 //    )
 // });
+
+
+
+
 
 self.addEventListener("install",installEvent => {
    installEvent.waitUntil(

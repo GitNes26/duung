@@ -1,7 +1,7 @@
 import { CloseLoader, Loader } from "../components/Loader.js";
 import { getToken } from "./helpers.js";
 
-export async function fetchRequestAsync(url, method, data={}, token='2|hd7hHMz4jmA9XGrn6N5hbVoxIpFJbi3sGEnSToaq', modal_close=null) {
+export async function fetchRequestAsync(url, method, data={}, token=null, modal_close=null) {
    // let {url, cbSuccess} = props;
    // let {api_path, method, data={}, token=false, modal_close=null} = props;
 
@@ -18,6 +18,7 @@ export async function fetchRequestAsync(url, method, data={}, token='2|hd7hHMz4j
 			},
 			body: JSON.stringify(data),
 		});
+      errorHandler(response);
 	} catch (error) {
       if (modal_close == true) btn_close.click();
       CloseLoader();
@@ -35,7 +36,7 @@ export async function fetchRequestAsync(url, method, data={}, token='2|hd7hHMz4j
 	return response.json();
 }
 
-export async function GET_fetchRequestAsync(url, method, token='2|hd7hHMz4jmA9XGrn6N5hbVoxIpFJbi3sGEnSToaq', modal_close=null) {
+export async function GET_fetchRequestAsync(url, method, token=null, modal_close=null) {
    // let {url, cbSuccess} = props;
    // let {api_path, method, token=false, modal_close=null} = props;
 
@@ -51,6 +52,7 @@ export async function GET_fetchRequestAsync(url, method, token='2|hd7hHMz4jmA9XG
             Authorization: token ? `Bearer ${token}` : "",
          },
       });
+      errorHandler(response);
 	} catch (error) {
       if (modal_close == true) btn_close.click();
       CloseLoader();
@@ -62,7 +64,6 @@ export async function GET_fetchRequestAsync(url, method, token='2|hd7hHMz4jmA9XG
         showConfirmButton: true,
         confirmButtonColor: "#494E53",
       });
-      console.log(error);
     }
 	CloseLoader();
 	return response.json();
@@ -85,6 +86,7 @@ export async function fetchRequest(props) {
 			},
 			body: JSON.stringify(data),
 		});
+      errorHandler(response);
 	} catch (error) {
       if (modal_close == true) btn_close.click();
       CloseLoader();
@@ -118,6 +120,7 @@ export async function GET_fetchRequest(props) {
             Authorization: token ? `Bearer ${token}` : "",
          },
       });
+      errorHandler(response);
 	} catch (error) {
       if (modal_close == true) btn_close.click();
       CloseLoader();
@@ -135,6 +138,15 @@ export async function GET_fetchRequest(props) {
 	return response.json();
 }
 
+function errorHandler(response) {
+   if (!response.ok) {
+      if (response.status === 401) {
+         if (response.statusText === "Unauthorized"){
+            location.hash = '/';
+         }
+      }
+   }
+}
 
 
 

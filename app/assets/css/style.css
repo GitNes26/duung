@@ -467,7 +467,8 @@ body {
 
 .reloj__position {
 	top: 3vh;
-	right: 5%;
+	right: 50%;
+	transform: translateX(50%);
 	background-color: #878acb;
 	border: 13px solid #610184;
 	border-radius: 50%;
@@ -878,7 +879,8 @@ body {
 
 	.reloj__position {
 		top: 4vh;
-		right: 1%;
+		right: 50%;
+		transform: translateX(50%);
 		background-color: #878acb;
 		border: 13px solid #610184;
 		border-radius: 50%;
@@ -1293,9 +1295,9 @@ body {
 .pos__btnBack {
 	z-index: 2;
 	margin-top: 0px;
-	top: 2vh;
+	top: 0.5vh;
 	position: fixed;
-	right: 0;
+	right: 2vw;
 }
 
 .wrapper {
@@ -1329,7 +1331,7 @@ body {
 	display: inline-block;
 	background: rgb(255, 221, 1);
 	border-radius: 50%;
-	transition: transform 1s ease;
+	transition: transform 0.5s ease-in-out;
 	transform: scale(0);
 	z-index: -1;
 }
