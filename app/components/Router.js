@@ -49,8 +49,8 @@ export async function Router() {
       // $root.innerHTML="<h1>perfil</h1>"
    }else if(hash === "#/score"){
       const obj = await getScore();
-      // await ScoreHeaders();
-      // await $root.appendChild(Score(obj));
+      await ScoreHeaders();
+      await $root.appendChild(Score(obj));
    }else if(hash === "#/cultiva"){
       await CultivaHeaders();
       await $root.appendChild(Cultiva());
