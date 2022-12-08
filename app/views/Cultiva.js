@@ -80,3 +80,7 @@ d.addEventListener("click", function(e) {
 //    return obj_res;
 // }
 //#endregion FUNCIONES LOGICAS
+
+export const getTips =async () =>{
+   
+}

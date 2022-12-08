@@ -20,7 +20,8 @@ DIFFICULTS = `${API_URL}/difficults`,
 TYPES_QUESTION = `${API_URL}/types_question`,
 ITEMS = `${API_URL}/items`,
 ANSWERS = `${API_URL}/answers`,
-GAMES = `${API_URL}/games`
+GAMES = `${API_URL}/games`,
+TIPS = `${API_URL}/tips`
 ;
 
 export default {
@@ -43,5 +44,6 @@ export default {
    DIFFICULTS,
    TYPES_QUESTION,
    ITEMS,
-   ANSWERS
+   ANSWERS,
+   TIPS
 }
