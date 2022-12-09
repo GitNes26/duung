@@ -111,6 +111,20 @@ export  function Score(props) {
 
    </main>
 </div>
+<div class="areaGreen">
+   <ul class="circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+   </ul>
+</div>
    `;
 	return $content;
 }

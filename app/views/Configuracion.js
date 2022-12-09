@@ -47,14 +47,19 @@ export  function Configuracion() {
                <div class="form-check">
   <input class="form-check-input d-none" type="checkbox" id="ch_musica">
   <label class="form-check-label" for="ch_musica">
+    <h2>
     Música &nbsp;<i id="icon-musica" class="fa-solid fa-music"></i>
+    </h2>
   </label>
 </div>
 
 <div class="form-check">
   <input class="form-check-input d-none" type="checkbox" id="ch_efectos" >
   <label class="form-check-label" for="ch_efectos">
-    Efectos &nbsp;<i id="icon-efectos" class="fa-solid fa-volume-high"></i>
+  <h2>
+   
+  Efectos &nbsp;<i id="icon-efectos" class="fa-solid fa-volume-high"></i>
+  </h2>
   </label>
 </div>
             </div>
@@ -63,6 +68,20 @@ export  function Configuracion() {
       </div>
 
    </main>
+</div>
+<div class="areaBlue">
+   <ul class="circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+   </ul>
 </div>
    `;
 	return $content;
@@ -111,13 +130,13 @@ d.addEventListener("click", function(e) {
 // }
 //#endregion FUNCIONES LOGICAS
 
-export const checkSounds = async()=>{
+// export const checkSounds = async()=>{
 
-   const efectsSound = getCookie("efectsSound")
-   const musicSound = getCookie("musicSound")
+//    const efectsSound = getCookie("efectsSound")
+//    const musicSound = getCookie("musicSound")
 
-   const ch_m = d.getElementById("ch_musica")
-   const ch_e = d.getElementById("ch_efectos")
-   ch_m.checked=musicSound==="true"?true:false;
-   ch_e.checked=efectsSound==="true"?true:false;
-}
+//    const ch_m = d.getElementById("ch_musica")
+//    const ch_e = d.getElementById("ch_efectos")
+//    ch_m.checked=musicSound==="true"?true:false;
+//    ch_e.checked=efectsSound==="true"?true:false;
+// }

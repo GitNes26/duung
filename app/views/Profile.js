@@ -10,14 +10,20 @@ const d = document;
 function addStyles() {
 	const $styles = d.querySelector("head style");
    $styles.innerHTML = `
-      .input__p{margin-top: 5px;border-radius:20px;border:1px #BB72DD;background-color: #BB72DD;}
-      .button__p{border-radius:20px;border:1px #49006B;background-color: #49006B;padding-left: 90px;padding-right: 90px;color: var(--white);-webkit-transition: all 0.3s ease;transition: all 0.3s ease;margin-top: 15px;margin-left: 8px;}
-      .button__p:hover{color: var(--white);border:1px #60028c;background-color: #60028c; -webkit-transform: scale(1.1) !important; transform: scale(1.04) !important;}
-      .circle__bloc1{border-radius:50%;width:200px;height:200px;margin-top: 20px;margin-left: -20px;}
-      .space__section{height:80px;padding-top:22px;border-radius:20px;margin-top:10px;}
-      @media (max-width: 900px) {.circle__bloc1{border-radius:50%;width:150px;height:150px;margin-left: 90px;margin-top:-10px;}}
-      @media (max-width: 550px) {.circle__bloc1{border-radius:50%;width:150px;height:150px;margin-right: 90px;}}
-      @media (max-width: 300px) {.circle__bloc1{border-radius:50%;width:150px;height:150px;margin-left:26px;}}
+   .input__p{margin-top: 5px;margin-left:-5px;border-radius:20px;border:1px #BB72DD;background-color: #BB72DD;}
+   .button__p{border-radius:20px;border:1px #49006B;background-color: #49006B;padding-left: 90px;padding-right: 90px;color: var(--white);-webkit-transition: all 0.3s ease;transition: all 0.3s ease;margin-top: 15px;margin-left: 8px;}
+   .button__p:hover{color: var(--white);border:1px #60028c;background-color: #60028c; -webkit-transform: scale(1.1) !important; transform: scale(1.04) !important;}
+   .circle__bloc1{border-radius:50%;width:200px;height:200px;margin-top: 20px;margin-left: -20px;}
+   .space__section{height:80px;padding-top:22px;border-radius:20px;margin-top:10px;}
+   @media (max-width: 900px) {.circle__bloc1{border-radius:50%;width:150px;height:150px;margin-left: 90px;margin-top:-10px;}}
+   @media (max-width: 550px) {.circle__bloc1{border-radius:50%;width:150px;height:150px;margin-right: 90px;}
+   .button__p{border-radius:20px;border:1px #49006B;background-color: #49006B;padding-left: 5px;padding-right: 5px;width:95%;height: 30px;font-size: 10px;color: var(--white);-webkit-transition: all 0.3s ease;transition: all 0.3s ease;}
+   .button__p:hover{color: var(--white);border:1px #60028c;background-color: #60028c; -webkit-transform: scale(1.1) !important; transform: scale(1.04) !important;}}
+   .input__p{margin-top: 5px;border-radius:20px;border:1px #BB72DD;background-color: #BB72DD;height:30px;width:80%;margin-left:5px;}
+}
+   @media (max-width: 300px) {.circle__bloc1{border-radius:50%;width:150px;height:150px;margin-left:26px;}
+   .button__p{border-radius:20px;border:1px #49006B;background-color: #49006B;padding-left: 5px;padding-right: 5px;width: 120px;height: 30px;font-size: 10px;color: var(--white);-webkit-transition: all 0.3s ease;transition: all 0.3s ease;}
+   .button__p:hover{color: var(--white);border:1px #60028c;background-color: #60028c; -webkit-transform: scale(1.1) !important; transform: scale(1.04) !important;}}
    `;
 }
 export function ProfileHeaders() {
@@ -45,23 +51,23 @@ export  function Profile(props) {
 
                <div class="col-md-8">
                   <div>
-                     <label class="label__p fw-bold">Nombre de usuario</label>
+                     <h5 class="label__p fw-bold">Nombre de usuario</h5>
                      <p class="text__p fw-light">${props.username}</p>
                   </div>
                   <div>
-                     <label class="label__p fw-bold">Nombre</label>
+                     <h5 class="label__p fw-bold">Nombre</h5>
                      <p class="text__p fw-light">${props.name}</p>
                   </div>
                   <div>
-                     <label class="label__p fw-bold">Rol Usuari</label>
+                     <h5 class="label__p fw-bold">Rol Usuari</h5>
                      <p class="text__p fw-light">${props.role_name}</p>
                   </div>
                   <div>
-                     <label class="label__p fw-bold">Nueva Contraseña</label>
+                     <h5 class="label__p fw-bold">Nueva Contraseña</h5>
                      <input type="text" class="form-control input__p " id="pass1" />
                   </div>
                   <div>
-                     <label class="label__p fw-bold">Confirmar contreseña</label>
+                     <h5 class="label__p fw-bold">Confirmar contreseña</h5>
                      <input type="text" class="form-control input__p" id="pass2" />
                      <button type="submit" class="btn button__p text__p" id="btn_aceptar_profile">Aceptar</button>
                   </div>
