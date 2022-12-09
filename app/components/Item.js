@@ -28,10 +28,6 @@ export const Item = (props={}) => {
                data-c="${answers[0].answer_correct}"
                type="button"
                style="
-                  background-color: #ffffff;
-                  border-radius: 50px;
-                  height: 80px;
-                  margin-top: 10px;
                "
             >
                <div style="padding: 20px" class="row text-start">
@@ -63,10 +59,6 @@ export const Item = (props={}) => {
                data-c="${answers[1].answer_correct}"
                type="button"
                style="
-                  background-color: #ffffff;
-                  border-radius: 50px;
-                  height: 80px;
-                  margin-top: 10px;
                "
             >
                <div style="padding: 20px" class="row text-start">
@@ -98,10 +90,6 @@ export const Item = (props={}) => {
                data-c="${answers[2].answer_correct}"
                type="button"
                style="
-                  background-color: #ffffff;
-                  border-radius: 50px;
-                  height: 80px;
-                  margin-top: 10px;
                "
             >
                <div style="padding: 20px" class="row text-start">
@@ -133,10 +121,6 @@ export const Item = (props={}) => {
                data-c="${answers[3].answer_correct}"
                type="button"
                style="
-                  background-color: #ffffff;
-                  border-radius: 50px;
-                  height: 80px;
-                  margin-top: 10px;
                "
             >
                <div style="padding: 20px" class="row text-start">

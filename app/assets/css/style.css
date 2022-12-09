@@ -546,7 +546,7 @@ body {
 		border-radius: 20px;
 		width: 100%;
 		max-height: 500px;
-		padding: 10px;
+		padding: 50px;
 	}
 
 	.title__p1 {
@@ -1309,7 +1309,7 @@ body {
 
 	display: inline-block;
 	text-align: center;
-	background: rgb(255, 221, 1);
+	background: var(--pinkHard);
 	color: #fff;
 	font-weight: bold;
 	line-height: 1;
@@ -1329,7 +1329,7 @@ body {
 	position: absolute;
 	content: "";
 	display: inline-block;
-	background: rgb(255, 221, 1);
+	background: var(--pinkHard);
 	border-radius: 50%;
 	transition: transform 0.5s ease-in-out;
 	transform: scale(0);
@@ -1364,4 +1364,18 @@ body {
 }
 @media screen and (max-width:480px) {
 	:root {--img--loading--height:40vw}
+}
+
+.btn_answer {
+	background-color: #ffffff;
+	border-radius: 50px;
+	height: 80px;
+	margin-top: 10px
+}
+
+.click_response_correct {
+	background-color:rgb(174, 231, 88) !important;
+}
+.click_response_incorrect {
+	background-color:rgb(216, 65, 65) !important;
 }

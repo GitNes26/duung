@@ -1,3 +1,4 @@
+import { SideBar } from "../components/SideBar.js";
 import api from "../helpers/api.js";
 import { fetchRequestAsync, GET_fetchRequestAsync } from "../helpers/fetchRequest.js";
 import { getId, getToken, route } from "../helpers/helpers.js";
@@ -30,7 +31,8 @@ export  function Profile(props) {
    // const data = await fillData();
 	const $content = d.createElement("div");
    $content.id = "view-profile";
-	$content.innerHTML = `
+   $content.appendChild(SideBar());
+	$content.innerHTML += `
    <div class="context">
    <div class="position-relative">
       <img src="/app/assets/images/Viñetas/Perfil.png" class="circlePurple position-absolute top-0 end-0" />

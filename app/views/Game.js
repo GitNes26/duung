@@ -1,6 +1,6 @@
 import { Item } from "../components/Item.js";
 import { SideBar } from "../components/SideBar.js";
-import { getCookie, route, setCookie } from "../helpers/helpers.js";
+import { getCookie, playAudio, route, setCookie } from "../helpers/helpers.js";
 import { getRound } from "./StartTrivia.js";
 
 const d = document;
@@ -99,7 +99,7 @@ const Counter = (time_question=5) => {
 
       if (time_question == 0) {
          clearInterval(counter);
-         nextItem();
+         // nextItem();
       }
       let time = secondsToString(time_question)
       d.querySelector("#view-game .reloj__let").textContent = time;
@@ -108,13 +108,15 @@ const Counter = (time_question=5) => {
 }
 
 const showItem = async(round) => {
+   
    await console.log("icono de respuesta correcta | incorrecta");
+   
    setTimeout(() => {
       const $item_container = d.querySelector("#item_container");
       if (!round) return
       $item_container.innerHTML = Item(round)
       Counter(round.item_time);
-   }, 350);
+   }, 1000);
 }
 
 const itemAnswer = (answer_element) => {
@@ -124,12 +126,22 @@ const itemAnswer = (answer_element) => {
    if (time_clock == "00:00") {
       nextItem();
    }
-   if (element.dataset.c == "0") console.log("incorrecta");
-   
-   console.log("correcta");
-   answers_correct++;
+
+   if (element.dataset.c == "1") {
+      console.log("correcta");
+      answers_correct++;
+   }
+   $(".btn_answer").removeClass("click_response_correct click_response_incorrect")
+   if (element.dataset.c == "1") {
+      element.classList.add("click_response_correct");
+      playAudio("correct_answer2.mp3");
+   } else {
+      element.classList.add("click_response_incorrect");
+      playAudio("error-answer.mp3");
+   }
+   console.log("incorrecta");
    setCookie("answers_correct", answers_correct)
-   nextItem()
+   nextItem();
 }
 
 

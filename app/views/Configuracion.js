@@ -1,3 +1,4 @@
+import { SideBar } from "../components/SideBar.js";
 import api from "../helpers/api.js";
 import { GET_fetchRequestAsync } from "../helpers/fetchRequest.js";
 import { getCookie, getId, getToken, route, setCookie } from "../helpers/helpers.js";
@@ -31,7 +32,8 @@ export  function Configuracion() {
 
 	const $content = d.createElement("div");
    $content.id = "view-conf";
-	$content.innerHTML = `
+	$content.appendChild(SideBar());
+	$content.innerHTML += `
    <div class="context">
    <div class="position-relative">
       <img src="/app/assets/images/Viñetas/Configuracion.png" class="circlePurple position-absolute top-0 end-0" />
@@ -41,22 +43,18 @@ export  function Configuracion() {
       <div class="space__cardC">
          <div class="bg__cardC">
             <div class="text-center scroll__cardP">
-               <h1 class="title__p">Ajustes</h1>
-
-               <div class="col-md-12 ">
-                  <label class="label__c fw-light">Volumen</label>
-               </div>
+               <h1 class="title__p">VOLUMEN</h1>
                <div class="form-check">
-  <input class="form-check-input" type="checkbox" id="ch_musica">
+  <input class="form-check-input d-none" type="checkbox" id="ch_musica">
   <label class="form-check-label" for="ch_musica">
-    Música
+    Música &nbsp;<i id="icon-musica" class="fa-solid fa-music"></i>
   </label>
 </div>
 
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" id="ch_efectos" >
+  <input class="form-check-input d-none" type="checkbox" id="ch_efectos" >
   <label class="form-check-label" for="ch_efectos">
-    Efectos
+    Efectos &nbsp;<i id="icon-efectos" class="fa-solid fa-volume-high"></i>
   </label>
 </div>
             </div>
@@ -75,11 +73,32 @@ d.addEventListener("click", function(e) {
    if (e.target.matches("#view-conf #ch_musica") || e.target.matches("#view-conf #ch_musica *")) {
       console.log(e.target.checked);
       setCookie("musicSound",e.target.checked)
+      const audio_theme = document.querySelector("#audio_theme");
+      if (e.target.checked) {
+         audio_theme.muted = false;
+         $("#icon-musica").removeClass("fas fa-music-slash")
+         $("#icon-musica").addClass("fa-solid fa-music")
+      }else{ 
+         audio_theme.muted = true;
+         $("#icon-musica").addClass("fas fa-music-slash")
+         $("#icon-musica").removeClass("fa-solid fa-music")
+      }
+      // if()
       // fillData();
    }
    if (e.target.matches("#view-conf #ch_efectos") || e.target.matches("#view-conf #ch_efectos *")) {
       console.log(e.target);
       setCookie("efectsSound",e.target.checked)
+      const event_audio = document.querySelector("#audio_events");
+      if (e.target.checked) {
+         event_audio.muted = false
+         $("#icon-efectos").removeClass("fas fa-volume-mute")
+         $("#icon-efectos").addClass("fa-solid fa-volume-high")
+      }else{ 
+         event_audio.muted = true
+         $("#icon-efectos").addClass("fas fa-volume-mute")
+         $("#icon-efectos").removeClass("fa-solid fa-volume-high")
+      }
       // fillData();
    }
 })

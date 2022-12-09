@@ -1,3 +1,4 @@
+import { SideBar } from "../components/SideBar.js";
 import api from "../helpers/api.js";
 import { GET_fetchRequestAsync } from "../helpers/fetchRequest.js";
 import { getId, getToken, route } from "../helpers/helpers.js";
@@ -83,7 +84,8 @@ export  function Score(props) {
    </div>
    </div>`
    }
-	$content.innerHTML = `
+   $content.appendChild(SideBar());
+	$content.innerHTML += `
    <div class="context">
    <div class="position-relative">
       <img src="/app/assets/images/Viñetas/Score.png" class="circlePurple position-absolute top-0 end-0" />
