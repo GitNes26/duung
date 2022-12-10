@@ -18,6 +18,7 @@ const filesToCache = [
 
 	"./app/assets/images/1.png",
 	"./app/assets/images/11.png",
+	"./app/assets/images/13.png",
 	"./app/assets/images/logo_duung.png",
 	"./app/assets/images/duung_icon.ico",
 
