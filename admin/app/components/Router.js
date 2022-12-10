@@ -11,7 +11,7 @@ const $root = document.getElementById("root");
 
 export async function Router() {
    let {hash} = location; 
-   console.log(hash);
+   // console.log(hash);
    Loader();
    $root.innerHTML = null;
    if (!hash || hash === "#/") {

@@ -145,9 +145,9 @@ function errorHandler(response) {
          }
       }
       if (response.status === 422) {
-         if (response.statusText === "Unprocessable Content"){
+         // if (response.statusText === "Unprocessable Content"){
             showAlert(null,'error','Usuario y/o contraseña invalidas!','',true);
-         }
+         // }
       }
    }
 }

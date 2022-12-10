@@ -12,7 +12,7 @@ export default class SideBar {
    ]
 
    getMenus = async () => {
-      console.log("el rellenarSideBar");
+      // console.log("el rellenarSideBar");
       // menus_sidebar.slideUp(1000);
       //   let perfil_id = Number(Cookies.get("dpnstash_perfil_id"));
       
@@ -20,11 +20,9 @@ export default class SideBar {
       //   const ajaxResponse = await peticionAjaxAsync(url_modelo_menu_app, data);
       //   const objResponse = ajaxResponse.Datos;
       const objResponse = this.menus
-      console.log(objResponse);
       let menus_sidebar = "";
       let father_menus = objResponse.filter((menu) => menu.id_father == 0);
       father_menus = father_menus.sort().map((father_menu) => {
-         console.log(father_menu);
          menus_sidebar += `
             <li class="nav-item  mb-3">
                <a href="#" class="nav-link">
@@ -54,7 +52,6 @@ export default class SideBar {
    };
 
    sideBar = async () => {
-      console.log("el sidebar");
       let sidebar = `
          <!-- Brand Logo -->
          <a

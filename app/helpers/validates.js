@@ -103,7 +103,7 @@ export const inputsValidate = (form) => {
 	return validate;
  }
 export const inputValidate = (inp) => {
-	console.log("inputValidate");
+	// console.log("inputValidate");
 	let input = $(inp);
 	if (input.val() == "" || input.val() == -1 || input.val() == "-1") {
 	  showToast("error", `Campo ${input.attr("data-input-name")} vacío.`);

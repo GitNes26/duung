@@ -64,14 +64,14 @@ if (menus_sidebar.length > 0) rellenarSideBar();
 const init = () => {
 
    let father_menus = menus.filter((menu) => menu.id_father == 0);
-   console.log("🚀 ~ file: sidebar.js ~ line 23 ~ init ~ father_menus", father_menus)
+  //  console.log("🚀 ~ file: sidebar.js ~ line 23 ~ init ~ father_menus", father_menus)
    father_menus = father_menus.sort().map((father_menu) => {
       $menu_template.querySelector("a").href = father_menu.path;
       $menu_template.querySelector("i.nav-icon").classList.add(father_menu.icon);
       $menu_template.querySelector("p").textContent = father_menu.name;
 
       let children_menus = menus.filter((menu) => menu.id_father == father_menu.menu_id);
-      console.log("🚀 ~ file: sidebar.js ~ line 30 ~ father_menus=father_menus.sort ~ children_menus", children_menus)
+      // console.log("🚀 ~ file: sidebar.js ~ line 30 ~ father_menus=father_menus.sort ~ children_menus", children_menus)
       children_menus = children_menus.sort().map((child_menu) => {
          $menu_child_template.querySelector("a").href = child_menu.path;
          $menu_child_template.querySelector("i").classList.add(child_menu.icon);

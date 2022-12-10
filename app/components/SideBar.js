@@ -30,7 +30,7 @@ export function SideBar() {
                      </a>
       
 
-                     <div class="d-grid">
+                     <div id="sidebar-menus" class="d-grid">
                      <a class="e__sidebar1 d-inline-block text-truncate" data-bs-parent="#sidebar" href="#/main"> <i class="fas fa-home icon"></i>Home</a>
 
                      <a class="e__sidebar1 d-inline-block text-truncate purpleScroll" data-bs-parent="#sidebar" href="#/choose-game"> <i class="fas fa-solid fa-gamepad icon"></i></i>Area de juego</a>

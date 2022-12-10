@@ -54,7 +54,6 @@ function mostrarAlertaConOpciones(
 				 timer: 1500,
 			  }).then(() => {
 				 if (refresh) {
-					console.log("refresh3"); /*window.location.reload();*/
 				 }
 				 switch (funcion_then) {
 					case "nada":

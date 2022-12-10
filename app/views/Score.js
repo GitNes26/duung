@@ -27,8 +27,8 @@ export function ScoreHeaders() {
 
 export  function Score(props) {
    // export  function Score() {
-   console.log("score",props);
-   console.log(props.length);
+   // console.log("score",props);
+   // console.log(props.length);
    // const data = await fillData();
 	const $content = d.createElement("div");
    $content.id = "view-score";
@@ -110,20 +110,6 @@ export  function Score(props) {
       </div>
 
    </main>
-</div>
-<div class="areaGreen">
-   <ul class="circles">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-   </ul>
 </div>
    `;
 	return $content;

@@ -74,20 +74,6 @@ export  function Cultiva(tips) {
 
    </main>
 </div>
-<div class="areaYellow">
-   <ul class="circles">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-   </ul>
-</div>
    `;
 	return $content;
 }

@@ -25,11 +25,9 @@ export function ConfiguracionHeaders() {
    addStyles();
 }
 
-export  function Configuracion() {
+export function Configuracion() {
    // console.log(props);
    // const data = await fillData();
-  
-
 	const $content = d.createElement("div");
    $content.id = "view-conf";
 	$content.appendChild(SideBar());
@@ -69,20 +67,6 @@ export  function Configuracion() {
 
    </main>
 </div>
-<div class="areaBlue">
-   <ul class="circles">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-   </ul>
-</div>
    `;
 	return $content;
 }
@@ -90,7 +74,7 @@ export  function Configuracion() {
 //#region FUNCIONES LOGICAS
 d.addEventListener("click", function(e) {
    if (e.target.matches("#view-conf #ch_musica") || e.target.matches("#view-conf #ch_musica *")) {
-      console.log(e.target.checked);
+      // console.log(e.target.checked);
       setCookie("musicSound",e.target.checked)
       const audio_theme = document.querySelector("#audio_theme");
       if (e.target.checked) {
@@ -106,7 +90,7 @@ d.addEventListener("click", function(e) {
       // fillData();
    }
    if (e.target.matches("#view-conf #ch_efectos") || e.target.matches("#view-conf #ch_efectos *")) {
-      console.log(e.target);
+      // console.log(e.target);
       setCookie("efectsSound",e.target.checked)
       const event_audio = document.querySelector("#audio_events");
       if (e.target.checked) {

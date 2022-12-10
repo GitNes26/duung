@@ -58,10 +58,10 @@ export  function Profile(props) {
                      <h5 class="label__p fw-bold">Nombre</h5>
                      <p class="text__p fw-light">${props.name}</p>
                   </div>
-                  <div>
+                  <!-- <div>
                      <h5 class="label__p fw-bold">Rol Usuari</h5>
                      <p class="text__p fw-light">${props.role_name}</p>
-                  </div>
+                  </div> -->
                   <div>
                      <h5 class="label__p fw-bold">Nueva Contraseña</h5>
                      <input type="text" class="form-control input__p " id="pass1" />
@@ -78,20 +78,6 @@ export  function Profile(props) {
       </div>
 
    </main>
-</div>
-<div class="areaPink">
-   <ul class="circles">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-   </ul>
 </div>
    `;
 	return $content;

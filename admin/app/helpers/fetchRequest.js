@@ -4,7 +4,7 @@ export async function fetchRequestAsync(url, method, data={}, token=false, modal
    // let {url, cbSuccess} = props;
    // let {api_path, method, data={}, token=false, modal_close=null} = props;
 
-   console.log("FetchRequest()");
+   // console.log("FetchRequest()");
 	let response;
 	await Loader();
 	try {
@@ -38,7 +38,6 @@ export async function GET_fetchRequestAsync(url, method, token='2|hd7hHMz4jmA9XG
    // let {url, cbSuccess} = props;
    // let {api_path, method, token=false, modal_close=null} = props;
 
-   console.log("FetchRequest()");
 	let response;
 	await Loader();
 	try {
@@ -71,7 +70,6 @@ export async function fetchRequest(props) {
    // let {url, cbSuccess} = props;
    let {api_path, method, data={}, token=false, modal_close=null} = props;
 
-   console.log("FetchRequest()");
 	let response;
 	// await Loader();
 	try {
@@ -105,7 +103,7 @@ export async function GET_fetchRequest(props) {
    // let {url, cbSuccess} = props;
    let {api_path, method, token=false, modal_close=null} = props;
 
-   console.log("FetchRequest()");
+   // console.log("FetchRequest()");
 	let response;
 	// await Loader();
 	try {

@@ -33,7 +33,7 @@ let round;
 export function Finish() {
    answers_correct = getCookie("answers_correct") == undefined ? 0 : getCookie("answers_correct");
    round = JSON.parse(getCookie("active_round"))
-   console.log(round);
+   // console.log(round);
 	const $container = d.createElement("div");
 	const $context = d.createElement("div");
    const $fragment = d.createDocumentFragment();
@@ -79,18 +79,18 @@ d.addEventListener("click", function(e) {
 
 export const updateGame = async() => {
    const game_id = JSON.parse(getCookie("active_game"));
-   console.log("🚀 ~ file: FinishTrivia.js:81 ~ updateGame ~ game_id", game_id)
-   console.log(round.round_quantity_items);
+   // console.log("🚀 ~ file: FinishTrivia.js:81 ~ updateGame ~ game_id", game_id)
+   // console.log(round.round_quantity_items);
    const data = {
       game_id,
       game_score: answers_correct,
       game_rate: (answers_correct/round.round_quantity_items)*100,
       game_quantity_items_correct: answers_correct,
    }
-   console.log("🚀 ~ file: FinishTrivia.js:83 ~ updateGame ~ data", data)
+   // console.log("🚀 ~ file: FinishTrivia.js:83 ~ updateGame ~ data", data)
    const fetchResponse = await fetchRequestAsync(`${api.GAMES}/complete`, api.PUT, data, getToken())
    const objResponse = fetchResponse.data;
-   console.log("🚀 ~ file: StartTrivia.js:70 ~ fillRound ~ fetchResponse", fetchResponse)
+   // console.log("🚀 ~ file: StartTrivia.js:70 ~ fillRound ~ fetchResponse", fetchResponse)
    setCookie("round", JSON.stringify(objResponse));
    route("main");
 };

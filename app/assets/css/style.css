@@ -18,6 +18,7 @@
 	--blocPink: #c065eb;
 	--scrollColor1: rgba(255, 255, 255, 0.247);
 	--scrollColor2: rgb(136, 136, 136);
+	--scrollColor3: #9acf79;
 	--font: Montserrat, Roboto, Helvetica, Arial, sans-serif;
 	/* --font1:; */
 }
@@ -40,12 +41,12 @@ body {
 	font-family: "Exo", sans-serif;
 	background-color: var(--purpleBg);
 	max-height: 100vh;
-	overflow-y: hidden !important;
+	/* overflow-y: hidden !important; */
 }
 
-#root {
+/* #root {
 	overflow-y: scroll;
-}
+} */
 
 .nav a {
 	cursor: pointer;
@@ -158,10 +159,10 @@ body {
 }
 
 .contenedor-light::-webkit-scrollbar-thumb {
-	background-color: var(--scrollColor2);
+	background-color: var(--scrollColor3);
 	/* background-image: linear-gradient(180deg, #00ffff 0, #41f5ff 25%, #53bcf2 50%, #5087ab 75%, #425a6e 100%); */
 	border-radius: 20px;
-	border: 1px solid var(--scrollColor2);
+	border: 1px solid var(--scrollColor3);
 
 }
 
@@ -333,7 +334,8 @@ body {
 .pink__bloc {
 	background-color: var(--blocPink);
 	border-radius: 20px;
-	height: 200px;
+	height: 190px;
+	width: 80%;
 	margin-right: 20px;
 	margin-bottom: 20px;
 
@@ -342,7 +344,8 @@ body {
 .yellow__bloc {
 	background-color: var(--blocYellow);
 	border-radius: 20px;
-	height: 200px;
+	height: 190px;
+	width: 80%;
 	margin-right: 20px;
 	margin-bottom: 20px;
 
@@ -351,7 +354,8 @@ body {
 .green__bloc {
 	background-color: var(--blocGreen);
 	border-radius: 20px;
-	height: 200px;
+	height: 190px;
+	width: 80%;
 	margin-right: 20px;
 	margin-bottom: 20px;
 }
@@ -359,13 +363,15 @@ body {
 .blue__bloc {
 	background-color: var(--blocBlue);
 	border-radius: 20px;
-	height: 200px;
+	height: 190px;
+	width: 80%;
 	margin-right: 20px;
 	margin-bottom: 20px;
+
 }
 
 .bloc__img {
-	width: 75%;
+	width: 60%;
 	text-align: center;
 }
 
@@ -380,9 +386,10 @@ body {
 }
 
 .images__bloc {
-	width: 200px;
-	margin-left: 40px;
-	margin-right: 20px;
+	width: 150px;
+	margin-top: 20px;
+	margin-left: 60px;
+
 }
 
 /* -----------------------------------------TRIVIA AREA ---------------------------------------------*/
@@ -412,13 +419,13 @@ body {
 .title__cardConfigurate {
 	color: var(--white);
 	font-family: 'LuckiestGuy Regular';
-	font-size: 60px;
+	font-size: 35px;
 	z-index: 2;
-	top: 6vh;
+	top: 0vh;
 }
 
 .card__Bloc {
-	top: 18vh;
+	top: 5vh;
 	width: 60%;
 	border-radius: 50px;
 	height: auto;
@@ -427,7 +434,7 @@ body {
 .subTittle__card {
 	color: var(--purpleDark);
 	font-family: 'LuckiestGuy Regular';
-	font-size: 30px;
+	font-size: 25px;
 }
 
 
@@ -489,6 +496,7 @@ body {
 
 /*-----------------------------------------Responsive Area------------------------------------------ */
 @media (max-width: 1300px) {
+	
 	.title__p1 {
 		color: var(--white);
 		font-family: 'LuckiestGuy Regular';
@@ -630,12 +638,23 @@ body {
 }
 
 @media (max-width: 770px) {
+	.space__cardCu {
+		top: 2vh;
+		position: absolute;
+		width: 50%;
+	}
 	.title__cardConfigurate {
 		color: var(--white);
 		font-family: 'LuckiestGuy Regular';
 		font-size: 45px;
 		z-index: 2;
 		top: 4vh;
+	}
+	.images__bloc {
+		width: 150px;
+		margin-top: 20px;
+		margin-left: 20px;
+	
 	}
 
 }
@@ -878,7 +897,7 @@ body {
 	}
 
 	.reloj__position {
-		top: 4vh;
+		top: 1vh;
 		right: 50%;
 		transform: translateX(50%);
 		background-color: #878acb;
@@ -937,6 +956,7 @@ body {
 
 
 @media (max-width: 420px) {
+
 	.circlePurple {
 		width: 300px;
 		z-index: 1;
@@ -1010,7 +1030,7 @@ body {
 	}
 
 	.space__cardSc {
-		top: 22vh;
+		top: 5vh;
 		position: absolute;
 		width: 80%;
 	}
@@ -1201,7 +1221,7 @@ body {
 	}
 
 	.space__cardCu {
-		top: 40vh;
+		top: 27vh;
 		position: absolute;
 		width: 90%;
 		margin-left: -25px;
@@ -1216,7 +1236,7 @@ body {
 	}
 
 	.space__cardP {
-		top: 40vh;
+		top: 25vh;
 		position: absolute;
 		width: 80%;
 	}
@@ -1286,6 +1306,12 @@ body {
 
 	.scroll__cardP::-webkit-scrollbar-track {
 		border-radius: 10px;
+	}
+	.images__bloc {
+		width: 150px;
+		margin-top: 20px;
+		margin-left: 20px;
+	
 	}
 
 }

@@ -77,13 +77,11 @@ form.addEventListener("submit", async function (e) {
    // ENVIAR PETICION
    const objResponse = await FetchRequest(`login`, POST, data);
 
-   console.log("🚀 ~ file: login.js:62 ~ objResponse", objResponse)
 
    const dataResponse = objResponse.data;
 
    if (!objResponse.status) return;
    Cookies.set('token', `${objResponse.token}`);
-   console.log(Cookies.get());
    Swal.fire({
       icon: `${objResponse.alert_icon}`,
       title: `BIENVENIDO <br> ${dataResponse.username}`,

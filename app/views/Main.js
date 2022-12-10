@@ -162,8 +162,8 @@ function blueScroll() {
 }
 
 const logOut = async () => {
-   console.log("LogOut()");
-   console.log(Cookies.get());
+   // console.log("LogOut()");
+   // console.log(Cookies.get());
    await GET_fetchRequestAsync(`${api.LOGOUT}/${getId()}`, api.DELETE, getToken())
    CleanCookies();
    route('')

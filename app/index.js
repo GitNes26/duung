@@ -1,4 +1,5 @@
 import { App } from "./App.js";
+import { CloseOffline, isOnline, Offline } from "./components/Offline.js";
 import { getCookie } from "./helpers/helpers.js";
 
 const audio_theme = document.querySelector("#audio_theme")
@@ -30,6 +31,12 @@ let ObjRound = [];
 
 // navigator.addEventListener("online",() => console.log("la app esta en linea"));
 // navigator.addEventListener("offline",() => console.log("la app NO esta en linea"));
+
+
+setInterval(() => {
+   if (!navigator.onLine && isOnline) { console.log('offline');  Offline(); }
+   else if (navigator.onLine && !isOnline) { console.log('online'); CloseOffline(); }
+}, 1000);
 
 document.addEventListener("DOMContentLoaded",App);
 window.addEventListener("hashchange",App);

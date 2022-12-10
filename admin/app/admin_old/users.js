@@ -273,11 +273,10 @@ const drawMainContent = () => {
    `;
 
    let table;
-   console.log("constructor del UserView");
    table = $('#tabla_usuarios').DataTable(DataTableConfig);
 }
 const functionClick = () => {
-   console.log("el click");
+   // console.log("el click");
 }
 document.addEventListener("DOMContentLoaded", function() {
    drawMainContent()

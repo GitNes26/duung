@@ -40,9 +40,10 @@
 
 .hamburger {
 	position: fixed;
-	top: 6px;
+	top: 3px;
 	z-index: 999;
 	display: block;
+	margin-top:-1px;
 	width: 25px;
 	height: 25px;
 	margin-left: -2px;
@@ -272,9 +273,9 @@
 }
 
 /* -------------------------------------------------Scroll All----------------------------------------------*/
-
+@media screen and (min-width: 1271px) and (max-width: 1920px) {
 .contenedor {
-	overflow-y: scroll;
+	overflow-y: hidden;
 	box-sizing: border-box;
 	background-color: #4e54c8;
 }
@@ -310,10 +311,61 @@
 	border-radius: 10px;
 }
 
+}
+
+
+@media screen and (min-width: 0px) and (max-width: 580px) {
+	.contenedor {
+		overflow-y: scroll;
+		box-sizing: border-box;
+		background-color: #4e54c8;
+	}
+	
+	/* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
+	
+	.contenedor::-webkit-scrollbar {
+		-webkit-appearance: none;
+	}
+	
+	.contenedor::-webkit-scrollbar:vertical {
+		width: 10px;
+		/* height: 30px; */
+	}
+	
+	.contenedor::-webkit-scrollbar-button:increment,
+	.contenedor-light::-webkit-scrollbar-button {
+		display: none;
+	}
+	
+	.contenedor::-webkit-scrollbar:horizontal {
+		height: 10px;
+	}
+	
+	.contenedor::-webkit-scrollbar-thumb {
+		/* background-color: #ffffff; */
+		/* background-image: linear-gradient(355deg, #b2eaff 0, #5389f2 50%, #003265 100%); */
+		background-color: #bcbcbc9c;
+		border-radius: 20px;
+	}
+	
+	.contenedor::-webkit-scrollbar-track {
+		border-radius: 10px;
+	}
+}
+
 @media (max-width: 600px) {
 	.ico__principal {
 		width: 200px;
 		position: relative;
 		margin-bottom: 30px;
 	}
+	
+}
+
+#sidebar-menus {
+	height: 70vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
 }

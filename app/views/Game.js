@@ -92,9 +92,10 @@ const secondsToString = (seconds) => {
    return hour + ':' + minute + ':' + second;
 }
 
+let counter
 const Counter = (time_question=5) => {
    if (location.hash != "#/game") return
-   let counter = setInterval(() => {
+   counter = setInterval(() => {
       if (location.hash != "#/game") clearInterval(counter);
 
       if (time_question == 0) {
@@ -108,8 +109,6 @@ const Counter = (time_question=5) => {
 }
 
 const showItem = async(round) => {
-   
-   await console.log("icono de respuesta correcta | incorrecta");
    
    setTimeout(() => {
       const $item_container = d.querySelector("#item_container");
@@ -128,7 +127,7 @@ const itemAnswer = (answer_element) => {
    }
 
    if (element.dataset.c == "1") {
-      console.log("correcta");
+      // console.log("correcta");
       answers_correct++;
    }
    $(".btn_answer").removeClass("click_response_correct click_response_incorrect")
@@ -138,17 +137,22 @@ const itemAnswer = (answer_element) => {
    } else {
       element.classList.add("click_response_incorrect");
       playAudio("error-answer.mp3");
+      // console.log("incorrecta");
    }
-   console.log("incorrecta");
    setCookie("answers_correct", answers_correct)
-   nextItem();
+   setTimeout(() => {
+      nextItem();
+   }, 1000);
 }
 
 
 const nextItem = () => {
    round_pos++;
    let rounds = JSON.parse(getCookie("round"))
-   if (round_pos == rounds.length) route("finish"); //console.log("fin de las preguntas pasar a la vista de resultados y actualizar puntos y tabla de game");
+   if (round_pos == rounds.length) {
+      clearInterval(counter);
+      route("finish"); //console.log("fin de las preguntas pasar a la vista de resultados y actualizar puntos y tabla de game");
+   }
    const round = rounds[round_pos];
    showItem(round)
 }

@@ -47,7 +47,7 @@ export const CleanCookies = () => {
 export const removeCookie = (name) => Cookies.remove(name, {expires})
 
 export const playAudio = (audio) => {
-   console.log("audio");
+   // console.log("audio");
    const event_audio = document.querySelector("#audio_events");
    event_audio.volume = 0.1;
    event_audio.src = `/app/assets/audios/${audio}`;

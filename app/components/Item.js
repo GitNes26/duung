@@ -10,8 +10,9 @@ export const Item = (props={}) => {
                style="
                   background-color: #ffffff;
                   border-radius: 20px;
-                  height: 380px;
-                  padding: 100px;
+                  height: auto;
+                  padding-top: 100px;
+                  padding-bottom: 100px;
                "
             >
                <h1 class="fw-light text1__game">${item_question}</h1>

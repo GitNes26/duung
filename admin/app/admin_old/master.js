@@ -1,6 +1,5 @@
 
 Cookies.set('token','1|shdai');
-console.log(Cookies.get());
 
 
 
@@ -20,7 +19,6 @@ btn_logout.addEventListener("mouseleave" ,function () {
 
 btn_logout.addEventListener("click", (e) => {
    e.preventDefault();
-   console.log("logout");
    // let datos = { accion: "cerrar_sesion" };
    location.href = "/";
    // fetch()

@@ -102,7 +102,6 @@ function mostrarAlertaConOpciones(
 				 timer: 1500,
 			  }).then(() => {
 				 if (refresh) {
-					console.log("refresh3"); /*window.location.reload();*/
 				 }
 				 switch (funcion_then) {
 					case "nada":
@@ -178,7 +177,6 @@ const GET_FetchRequest = async(api_path, method, token = false) => {
 }
 
 const FetchRequest = async(api_path, method, data={}, token=false, modal_close=true) => {
-	console.log("FetchRequest()");
 	let response;
 	await showBlocUI();
 	try {

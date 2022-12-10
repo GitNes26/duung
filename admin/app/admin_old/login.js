@@ -14,7 +14,6 @@ const
    hola = document.querySelector("#hola"),
    scripts = document.querySelector("#scripts")
 ;
-console.log(scripts);
 
 head.innerHTML = `
    <meta charset="UTF-8" />
@@ -139,7 +138,6 @@ main.innerHTML = `
 const script = document.createElementNS("script");
 script.src = "/js/test.js";
 script.text = `console.log("hola script");`;
-console.log("🚀 ~ file: login.js:145 ~ script", script)
 body.appendChild(scripts) 
 // `
 //    <script src="/js/test.js"></script>
@@ -160,13 +158,12 @@ form.addEventListener("submit", async function (e) {
    // ENVIAR PETICION
    const objResponse = await FetchRequest(`login`, POST, data);
 
-   console.log("🚀 ~ file: login.js:62 ~ objResponse", objResponse)
 
    const dataResponse = objResponse.data;
 
    if (!objResponse.status) return;
    Cookies.set('token', `${objResponse.token}`);
-   console.log(Cookies.get());
+   // console.log(Cookies.get());
    Swal.fire({
       icon: `${objResponse.alert_icon}`,
       title: `BIENVENIDO <br> ${dataResponse.username}`,
