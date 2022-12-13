@@ -51,6 +51,8 @@ export const playAudio = (audio) => {
    const event_audio = document.querySelector("#audio_events");
    event_audio.volume = 0.1;
    event_audio.src = `/app/assets/audios/${audio}`;
+
+   if (audio == "error-answer.mp3") event_audio.currentTime = 5;
    event_audio.play();
 }
 

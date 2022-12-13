@@ -1,3 +1,7 @@
+import api from "../helpers/api.js";
+import { GET_fetchRequestAsync } from "../helpers/fetchRequest.js";
+import { CleanCookies, getId, getToken, route } from "../helpers/helpers.js";
+
 export function SideBar() {
    const $sidebar = document.createElement("div")
    $sidebar.id = "navbar";
@@ -50,4 +54,17 @@ export function SideBar() {
       </div>
    `;
    return $sidebar;
+}
+document.addEventListener("click", function(e) {
+   if (e.target.matches("#btn_logout") || e.target.matches("#btn_logout *")) {
+      logOut();
+   }
+})
+
+const logOut = async () => {
+   // console.log("LogOut()");
+   // console.log(Cookies.get());
+   await GET_fetchRequestAsync(`${api.LOGOUT}/${getId()}`, api.DELETE, getToken())
+   CleanCookies();
+   route('');
 }

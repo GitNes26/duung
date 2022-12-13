@@ -55,8 +55,8 @@ export  function Profile(props) {
                      <p class="text__p fw-light">${props.username}</p>
                   </div>
                   <div>
-                     <h5 class="label__p fw-bold">Nombre</h5>
-                     <p class="text__p fw-light">${props.name}</p>
+                     <h5 class="label__p fw-bold">E-mail</h5>
+                     <p class="text__p fw-light">${props.email}</p>
                   </div>
                   <!-- <div>
                      <h5 class="label__p fw-bold">Rol Usuari</h5>

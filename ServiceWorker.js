@@ -1,4 +1,4 @@
-const cacheName = "pwa-duung-v1.2.0";
+const cacheName = "pwa-duung-v1.2.1";
 const filesToCache = [
 	"./",
 	"./index.html",
@@ -48,15 +48,22 @@ const filesToCache = [
 
 
 // Cache on install
-self.addEventListener("install", e => {
-    console.log("[ServiceWorker**] - Install");
-    e.waitUntil(
-        caches.open(cacheName).then(cache => {
-            console.log("[ServiceWorker**] - Caching app shell");
-            return cache.addAll(filesToCache);
-        })
-    );
-});
+// self.addEventListener("install", e => {
+//     console.log("[ServiceWorker**] - Install");
+//     e.waitUntil(
+//         caches.open(cacheName).then(cache => {
+//             console.log("[ServiceWorker**] - Caching app shell");
+//             return cache.addAll(filesToCache);
+//         })
+//     );
+// });
+self.addEventListener("install",installEvent => {
+   installEvent.waitUntil(
+      caches.open(cacheName).then(cache => {
+         cache.addAll(filesToCache);
+      })
+   )
+})
 
 self.addEventListener("activate", event => {
     caches.keys().then(keyList => {

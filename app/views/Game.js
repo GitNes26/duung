@@ -93,14 +93,15 @@ const secondsToString = (seconds) => {
 }
 
 let counter
-const Counter = (time_question=5) => {
+const Counter = (time_question) => {
    if (location.hash != "#/game") return
    counter = setInterval(() => {
-      if (location.hash != "#/game") clearInterval(counter);
+      if (location.hash != "#/game") {clearInterval(counter); return }
 
       if (time_question == 0) {
-         clearInterval(counter);
-         // nextItem();
+         playAudio("error-answer.mp3");
+         // clearInterval(counter);
+         nextItem();
       }
       let time = secondsToString(time_question)
       d.querySelector("#view-game .reloj__let").textContent = time;
@@ -109,22 +110,16 @@ const Counter = (time_question=5) => {
 }
 
 const showItem = async(round) => {
-   
-   setTimeout(() => {
-      const $item_container = d.querySelector("#item_container");
-      if (!round) return
-      $item_container.innerHTML = Item(round)
-      Counter(round.item_time);
-   }, 1000);
+   const $item_container = d.querySelector("#item_container");
+   if (!round) return
+   $item_container.innerHTML = Item(round)
+   Counter(round.item_time);
 }
 
 const itemAnswer = (answer_element) => {
    let element = answer_element.parentElement;
    while (!element.classList.contains("btn_answer")) element = element.parentElement;
    let time_clock = d.querySelector("#view-game .reloj__let").textContent
-   if (time_clock == "00:00") {
-      nextItem();
-   }
 
    if (element.dataset.c == "1") {
       // console.log("correcta");
@@ -139,14 +134,15 @@ const itemAnswer = (answer_element) => {
       playAudio("error-answer.mp3");
       // console.log("incorrecta");
    }
-   setCookie("answers_correct", answers_correct)
+   setCookie("answers_correct", answers_correct);
    setTimeout(() => {
       nextItem();
-   }, 1000);
+   }, 500);
 }
 
 
 const nextItem = () => {
+   clearInterval(counter);
    round_pos++;
    let rounds = JSON.parse(getCookie("round"))
    if (round_pos == rounds.length) {

@@ -21,7 +21,7 @@ export async function Router() {
    // const $back_page = navigation.back()
    
    let {hash} = location; 
-   console.log(hash);
+   // console.log(hash);
    await Loader();
    
    $("#bubblesArea").removeClass()
